@@ -1,0 +1,20 @@
+/* Reset default browser spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global font + background color */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fef9f4;
+    color: #333;
+    line-height: 2;
+    padding: 10px;
+}
+
+/* Container spacing for sections | Without section padding, your content would be stuck to the edges of the page. */
+section {
+    padding: 40px 20px;
+}
