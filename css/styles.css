@@ -18,3 +18,62 @@ body {
 section {
     padding: 40px 20px;
 }
+
+/* HEADER STYLING */
+
+/* Main Header Container */
+.site-header {
+    background-color: white;        /* Clean and neutral */
+    padding: 20px 40px;             /* Space inside header */
+    display: flex;                  /* Allows logo + nav to sit side-by-side */
+    justify-content: space-between; /* Push items to opposite sides */
+    align-items: center;            /* Vertical centering */
+    border-bottom: 1px solid #ddd;  /* Light separator line */
+}
+
+/* Logo + tagline wrapper */
+.header-top {
+    display: flex;
+    flex-direction: column;  /* Stack logo on top of tagline */
+}
+
+/* Logo Text */
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Tagline text */
+.tagline {
+    font-size: 14px;
+    color: #777;
+}
+
+
+/* Navigation list horizontal layout */
+.main-nav ul { 
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+
+/* Individual nav links */
+.main-nav a {
+    text-decoration:none; /* Removes underline */
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.2s ease; /* Smooth hover */
+}
+
+/* Hover Effect */
+.main-nav a:hover {
+    color: #ff7f50;
+}
+
+
+
+
+
