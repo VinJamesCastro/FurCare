@@ -34,15 +34,50 @@
     <!-- Main Content -->
     <main>
 
+        <!-- Hero Section -->
+         <section class="hero-section">
+            <h1 class = "hero-title">Professional Pet Care, Anytime.</h1>
+            <p class="hero-subtitle">Book trusted pet sitters and grooming service</p>
+            <a href="#" class="hero-button">Book Now</a>
+        </section>
+
+
         <!-- Booking Form Section -->
         <section class="booking-section">
             <h2>Book a Pet Service</h2>
+            <form class ="booking-form">
+
+                <!-- Pet Name -->
+                 <label for="pet-name">Pet Name</label>
+                 <input type="text" id="pet-name" placeholder="Enter your pet's name">
+
+                <!-- Service Type -->
+                 <label for="service-type">Select Service</label>
+                 <select id="service-type"> 
+                    <option>Pet Sitting</option>
+                    <option>Pet Walking</option>
+                    <option>Pet Grooming</option>
+                 </select>
+
+                <!-- Date -->
+                  <label for="date">Preferred Date</label>
+                  <input type="date" id="date">
+
+                <!-- Message -->
+                 <label for="message">Additional Notes</label>
+                 <textarea id="message" placeholder="Anything we should know?"> </textarea>
+
+                <!-- Submit BUtton -->
+                 <button type="submit" class="booking-button">Submit Booking</button>
+            </form>
         </section>
 
         <!-- Services Section -->
         <section class="services-section">
             <h2>Our Services</h2>
         </section>
+
+        
 
     </main>
 
