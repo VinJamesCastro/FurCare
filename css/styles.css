@@ -77,6 +77,19 @@ section {
 }
 
 /* ===== HERO SECTION ===== */
+
+/* Full viewport first page */
+.hero-section {
+    min-height: 100vh; /* 100% of viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center;     /* Horizontally center content */
+    padding: 0 20px;
+    background-color: #fff5ee;
+}
+
+
 .hero-section {
     background-color: #fff5ee;       /* Soft warm background */
     text-align: center;              /* Center everything */
