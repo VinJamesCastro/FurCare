@@ -41,7 +41,7 @@ section {
 .logo {
     font-size: 28px;
     font-weight: bold;
-    color: #333;
+    color: #ff6f61;
 }
 
 /* Tagline text */
@@ -169,8 +169,59 @@ section {
 }
 
 
+/* ===== SERVICES SECTION ===== */
+.services-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.services-section h2 {
+    margin-bottom: 30px;
+}
+
+/* Layout container */
+.services-container {
+    display: flex; /* Enable flexbox (horizontal layout) */
+    flex-wrap: wrap;  /* Allow cards to wrap on small screens */
+    justify-content: center; /* Center the cards horizontally */
+    gap: 20px;  /* Space between cards */
+}
+
+/* Individual cards */
+.service-card {
+    background-color: #ffffff;  /* White clean card */
+    padding:30px 20px; /* Inner spacing */
+    border-radius: 20px; /* Smooth rounded corners */
+    box-shadow: 0 0 12px rgba(0,0,0,0.06); /* Soft shadow */
+    width: 280px; /* Fixed width per card */
+    transition: 0.25 ease; /* Smooth hover animation */
+}
+
+/* Icon styling */
+.service-icon {
+    font-size: 40px;    /* Makes emoji big like an icon */
+    margin-bottom: 15px; /* Space below the icon */
+}
+
+/* Hover effect */
+.service-card:hover {
+    transform: translateY(-6px); /* Card lifts up */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12); /* Card lifts up */
+}
 
 
+/* ===== FOOTER ===== */
+/* Footer container */
 
+.site-footer {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 60px;
+}
 
-
+.site-footer p {
+    font-size: 14px;
+    opacity: 0.8;
+}
