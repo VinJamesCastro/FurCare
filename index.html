@@ -1,116 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FurCare</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-    <!-- Header Section -->
+    <!-- ===== HEADER ===== -->
     <header class="site-header">
-
-        <!-- Logo and tagline container -->
+        <!-- Logo container -->
         <div class="header-top">
-            <h1 class="logo">🐾FurCare</h1>
+            <h1 class="logo">🐾 FurCare</h1>
         </div>
 
-        <!-- Main Navigation -->
+        <!-- Navigation links -->
         <nav class="main-nav">
             <ul class="nav-list">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#hero">Home</a></li>       <!-- Scroll to hero section -->
+                <li><a href="#about">About</a></li>     <!-- Scroll to about section -->
+                <li><a href="#services">Services</a></li> <!-- Scroll to services -->
+                <li><a href="#booking">Book Now</a></li> <!-- Scroll to booking form -->
             </ul>
         </nav>
-
     </header> 
 
-    <!-- Main Content -->
-    <main>
+    <!-- ===== HERO SECTION ===== -->
+<section id="hero" class="hero-section">
+    <div class="hero-container">
+        <!-- Left side: Text content -->
+        <div class="hero-text">
+            <h1 class="hero-title">Professional Pet Care, Anytime.</h1>
+            <p class="hero-subtitle">Book trusted pet sitters and grooming services easily from home.</p>
+            <a href="#booking" class="hero-button">Book Now</a>
+        </div>
 
-        <!-- Hero Section -->
-         <section class="hero-section">
-            <h1 class = "hero-title">Professional Pet Care, Anytime.</h1>
-            <p class="hero-subtitle">Book trusted pet sitters and grooming service</p>
-            <a href="#" class="hero-button">Book Now</a>
-        </section>
-
-
-        <!-- Booking Form Section -->
-        <section class="booking-section">
-            <h2>Book a Pet Service</h2>
-            <form class ="booking-form">
-
-                <!-- Pet Name -->
-                 <label for="pet-name">Pet Name</label>
-                 <input type="text" id="pet-name" placeholder="Enter your pet's name">
-
-                <!-- Service Type -->
-                 <label for="service-type">Select Service</label>
-                 <select id="service-type"> 
-                    <option>Pet Sitting</option>
-                    <option>Pet Walking</option>
-                    <option>Pet Grooming</option>
-                 </select>
-
-                <!-- Date -->
-                  <label for="date">Preferred Date</label>
-                  <input type="date" id="date">
-
-                <!-- Message -->
-                 <label for="message">Additional Notes</label>
-                 <textarea id="message" placeholder="Anything we should know?"> </textarea>
-
-                <!-- Submit BUtton -->
-                 <button type="submit" class="booking-button">Submit Booking</button>
-            </form>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services-section">
-            <h2>Our Services</h2>
-            <div class="services-container">
+        <!-- Right side: Visual / Image -->
+        <div class="hero-visual">
+            <img src="assets/images/pet_hero.jpg" alt="Happy pets" />
+            <!-- For now, you can use a placeholder image -->
+        </div>
+    </div>
+</section>
 
 
-                <!-- Service Card 1-->
-                <div class="service-card">
-                    <div class="service-icon">🐶</div>
-                    <h3>Pet Sitting</h3>
-                    <p>Reliable sitters who care for your pets at home.</p>
-                </div>
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="about-section">
+        <h2>About FurCare</h2>
+        <p>FurCare provides trusted, reliable pet care services. From sitting to grooming, we ensure your furry friends are happy and safe while you’re away.</p>
+    </section>
 
-                  <!-- Service Card 2-->
-                <div class="service-card">
-                    <div class="service-icon">✂️</div>
-                    <h3>Pet Grooming</h3>
-                    <p>Professional grooming to keep your pets clean and happy.</p>
-                </div>
-
-
-                 <!-- Service Card 2-->
-                <div class="service-card">
-                    <div class="service-icon">🚶</div>
-                    <h3>Pet Walking</h3>
-                    <p>Daily walks and exercise for energetic pets.</p>
-                </div>
-
-
+    <!-- ===== SERVICES SECTION ===== -->
+    <section id="services" class="services-section">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <!-- Individual Service Card -->
+            <div class="service-card">
+                <div class="service-icon">🐶</div>
+                <h3>Pet Sitting</h3>
+                <p>Reliable sitters who care for your pets at home.</p>
             </div>
-        </section>
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Pet Grooming</h3>
+                <p>Professional grooming to keep your pets clean and happy.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚶</div>
+                <h3>Pet Walking</h3>
+                <p>Daily walks and exercise for energetic pets.</p>
+            </div>
+        </div>
+    </section>
 
-        
+    <!-- ===== BOOKING SECTION ===== -->
+    <section id="booking" class="booking-section">
+        <h2>Book a Pet Service</h2>
+        <form class="booking-form">
+            <!-- Pet Name input -->
+            <label for="pet-name">Pet Name</label>
+            <input type="text" id="pet-name" placeholder="Enter your pet's name">
 
-    </main>
+            <!-- Service Type selector -->
+            <label for="service-type">Select Service</label>
+            <select id="service-type">
+                <option>Pet Sitting</option>
+                <option>Pet Walking</option>
+                <option>Pet Grooming</option>
+            </select>
 
-    <!-- Footer Section -->
+            <!-- Preferred Date -->
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date">
+
+            <!-- Additional Notes -->
+            <label for="message">Additional Notes</label>
+            <textarea id="message" placeholder="Anything we should know?"></textarea>
+
+            <!-- Submit Button -->
+            <button type="submit" class="booking-button">Submit Booking</button>
+        </form>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <p>© 2025 FurCare. All rights reserved.</p>
     </footer>
 
 </body>
-</html>
+
+
+
+
