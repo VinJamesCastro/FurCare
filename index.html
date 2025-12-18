@@ -10,9 +10,15 @@
 
     <!-- ===== HEADER ===== -->
 <header class="site-header">
-    <!-- Logo container -->
-    <div class="header-top">
-        <h1 class="logo">🐾 FurCare</h1>
+    <!-- Logo + Text container -->
+    <div class="logo-container">
+        <!-- Circular Logo with Emoji -->
+        <div class="logo">
+            <span class="emoji">🐾</span>
+        </div>
+
+        <!-- Site Name -->
+        <h1 class="header">FurCare</h1>
     </div>
 
     <!-- Main Navigation links -->
@@ -34,23 +40,72 @@
     </nav>
 </header>
 
+
 <!-- ===== HERO SECTION ===== -->
 <section id="hero" class="hero-section">
-    <div class="hero-container">
+    <div class="hero-container"> <!-- Flex container for text + image -->
+
         <!-- Left side: Text content -->
         <div class="hero-text">
-            <h1 class="hero-title">Professional Pet Care, Anytime.</h1>
-            <p class="hero-subtitle">Book trusted pet sitters and grooming services easily from home.</p>
-            <a href="#booking" class="hero-button">Book Now</a>
+            <!-- Main heading with gradient highlight -->
+            <h1 class="hero-title">
+                Complete Pet Care <br>
+                <span class="highlight">At Your Fingertips</span>
+            </h1>
+
+            <!-- Subtitle / description -->
+            <p class="hero-subtitle">
+                FurCare is the all-in-one platform connecting pet owners with services, 
+                health tracking, social features, and expert care. Everything your furry friend needs in one place.
+            </p>
+
+            <!-- Buttons container -->
+            <div class="hero-actions">
+                <!-- Primary call-to-action button -->
+                <a href="#sign-up" class="btn-primary">Get Started - It's Free</a>
+                <!-- Secondary action button -->
+                <a href="#demo" class="btn-secondary">
+                    <span class="play-icon">▶</span> Watch Demo
+                </a>
+            </div>
+
+            <!-- Checklist / bullet points below buttons -->
+            <div class="hero-checklist">
+                <span><span class="check">✓</span> No credit card required</span>
+                <span><span class="check">✓</span> 14-day free trial</span>
+                <span><span class="check">✓</span> Cancel anytime</span>
+            </div>
         </div>
 
         <!-- Right side: Visual / Image -->
         <div class="hero-visual">
-            <img src="assets/images/pet_hero.jpg" alt="Happy pets" />
+            <div class="image-wrapper"> <!-- Relative container for floating cards -->
+                <!-- Main hero image -->
+                <img src="assets/images/pet_hero.jpg" alt="Dog licking nose" class="main-img" />
+                
+                <!-- Floating card: Health check -->
+                <div class="floating-card health-check">
+                    <div class="card-icon check-circle">✓</div> <!-- Icon inside card -->
+                    <div class="card-content">
+                        <strong>Health Check Complete</strong> <!-- Card title -->
+                        <p>Max is doing great!</p> <!-- Card subtitle -->
+                    </div>
+                </div>
+
+                <!-- Floating card: Walker status -->
+                <div class="floating-card walker-status">
+                    <div class="card-icon target-icon">🎯</div> <!-- Icon inside card -->
+                    <div class="card-content">
+                        <strong>Walker Arriving Soon</strong>
+                        <p>Sarah • 5 min away</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
     </div>
 </section>
-
 
 
     <!-- ===== ABOUT SECTION ===== -->

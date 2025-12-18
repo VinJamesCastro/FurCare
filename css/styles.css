@@ -29,15 +29,39 @@ body {
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Logo */
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #2b2a2a;
+/* Flex container for logo + text */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between emoji circle and text */
 }
 
+/* Logo circle */
 .logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ae4af2, #f04294);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
     padding-left: 100px;
+}
+
+/* Emoji inside logo */
+.emoji {
+  font-size: 30px;
+}
+
+/* Site name */
+.header {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2b2a2a;
 }
 
 /* Main nav container */
@@ -76,90 +100,177 @@ body {
 }
 
 .main-nav a:hover {
-    color: #ff7f50;
+    color: #9121ff;
 }
 
 
 /* ===== HERO SECTION ===== */
+
 /* Hero section container */
 .hero-section {
-    min-height: 100vh;           /* Full viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 20px;
-    background-color: #fff5ee;
+    background-color: #f5f2f7; /* Light purple background */
+    padding: 100px 40px;        /* Top/bottom and left/right padding */
+    min-height: 100vh;          /* Full viewport height */
+    display: flex;              /* Flex layout */
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically */
 }
 
-/* Split into two columns */
+/* Flex container: left text + right image */
 .hero-container {
-    display: flex;
-    flex-wrap: wrap;           /* Wrap on small screens */
-    max-width: 1200px;
-    width: 100%;
-    align-items: center;
-    gap: 40px;                 /* Space between text and visual */
+    display: flex;              /* Row layout */
+    flex-wrap: wrap;            /* Wrap on smaller screens */
+    max-width: 1200px;          /* Limit container width */
+    width: 100%;                /* Full width */
+    align-items: center;        /* Vertically align items */
+    gap: 40px;                  /* Space between text & image */
 }
 
 /* Left column: text */
 .hero-text {
-    flex: 1;                   /* Takes available space */
-    min-width: 280px;          /* Prevents being too small on mobile */
+    flex: 1;                    /* Take remaining space */
+    min-width: 280px;           /* Prevent collapsing on small screens */
 }
 
 /* Right column: visual */
 .hero-visual {
-    flex: 1;                   /* Takes available space */
-    display: flex;
-    justify-content: center;
-    min-width: 280px;
+    flex: 1;                    /* Take remaining space */
+    min-width: 280px;           /* Prevent collapsing on small screens */
+    display: flex;              /* Flex for inner alignment */
+    justify-content: center;    /* Center image horizontally */
 }
 
-.hero-visual img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
+/* Main hero image */
+.main-img {
+    width: 100%;                /* Fill container width */
+    border-radius: 30px;        /* Rounded corners */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Soft shadow */
 }
 
-/* Hero text styling */
+/* Hero title styling */
 .hero-title {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 52px;            /* Large font size */
+    line-height: 1.1;           /* Tight line height */
+    font-weight: bold;           /* Bold text */
+    margin-bottom: 20px;        /* Space below title */
+    color: #1a1a1a;             /* Dark text color */
 }
 
+/* Gradient highlight inside title */
+.hero-title .highlight {
+    background: linear-gradient(to right, #a855f7, #ec4899); /* Gradient text */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Show gradient */
+}
+
+/* Subtitle / description */
 .hero-subtitle {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 25px;
+    font-size: 18px;            /* Medium font size */
+    color: #555;                /* Gray text */
+    margin-bottom: 25px;        /* Space below subtitle */
 }
 
-.hero-button {
-    padding: 12px 25px;
-    background-color: #ff7f50;
-    color: #fff;
-    border-radius: 8px;
+/* Container for buttons */
+.hero-actions {
+    display: flex;              /* Row layout */
+    gap: 15px;                  /* Space between buttons */
+    margin-bottom: 30px;        /* Space below buttons */
+}
+
+/* Primary button styling */
+.btn-primary {
+    padding: 15px 30px;                         /* Internal spacing */
+    background: linear-gradient(90deg, #a855f7, #ec4899); /* Gradient background */
+    color: #fff;                               /* White text */
+    border-radius: 50px;                        /* Rounded pill shape */
+    text-decoration: none;                       /* Remove underline */
+    font-weight: 600;                            /* Semi-bold */
+}
+
+/* Primary button hover */
+.btn-primary:hover {
+    background: linear-gradient(90deg, #9121ff, #f04294); /* Darker gradient on hover */
+}
+
+/* Secondary button styling */
+.btn-secondary {
+    padding: 15px 30px;
+    border: 1px solid #ddd;                    /* Light border */
+    border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
+    color: #1a1a1a;
+    display: flex;                             /* Row layout for icon + text */
+    align-items: center;
+    gap: 8px;                                  /* Space between icon & text */
 }
 
-.hero-button:hover {
-    background-color: #ff5722;
+/* Checklist under buttons */
+.hero-checklist {
+    display: flex;                             /* Row layout */
+    gap: 20px;                                 /* Space between items */
+    font-size: 13px;                           /* Small text */
+    color: #2e7d32;                            /* Green text for checkmarks */
 }
 
-/* Responsive adjustments */
+/* Image wrapper to hold floating cards */
+.image-wrapper {
+    position: relative;                        /* So absolute cards are positioned */
+    max-width: 450px;                          /* Limit image size */
+}
+
+/* Floating cards: general */
+.floating-card {
+    position: absolute;                         /* Positioned relative to wrapper */
+    background: #fff;                           /* White background */
+    padding: 12px 20px;                         /* Internal spacing */
+    border-radius: 12px;                        /* Rounded corners */
+    display: flex;                              /* Row layout */
+    align-items: center;
+    gap: 12px;                                  /* Space between icon & content */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);   /* Soft shadow */
+}
+
+/* Position of specific floating cards */
+.health-check {
+    top: -20px;
+    left: -40px;
+}
+
+.walker-status {
+    bottom: -20px;
+    right: -20px;
+}
+
+/* Floating card icons */
+.card-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Specific colors for icons */
+.check-circle { background: #e8f5e9; color: #2e7d32; }
+.target-icon { background: #fff0f0; }
+
+/* Floating card content */
+.card-content strong { display: block; font-size: 14px; } /* Title */
+.card-content p { font-size: 12px; color: #666; margin: 0; } /* Subtitle */
+
+/* ===== Responsive adjustments ===== */
 @media screen and (max-width: 900px) {
     .hero-container {
-        flex-direction: column;  /* Stack text above visual on smaller screens */
+        flex-direction: column;  /* Stack text above visual */
         text-align: center;
     }
-
-    .hero-text, .hero-visual {
-        min-width: 100%;
+    .image-wrapper {
+        max-width: 80%;          /* Smaller image on mobile */
     }
-
-    .hero-visual img {
-        max-width: 80%; /* smaller image on mobile */
+    .floating-card {
+        position: relative;      /* Move cards below image */
+        margin: 10px auto;
     }
 }
 
