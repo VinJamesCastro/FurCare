@@ -18,29 +18,56 @@ body {
 
 /* ===== HEADER ===== */
 .site-header {
-    position: sticky;      /* Stays at top while scrolling */
+    position: sticky;
     top: 0;
-    z-index: 1000;         /* Above all content */
-    display: flex;         
-    justify-content: space-between; /* Logo left, nav right */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* logo left, nav right */
     align-items: center;
     padding: 20px 40px;
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
+/* Logo */
 .logo {
     font-size: 28px;
     font-weight: bold;
-    color: #ff6f61;
+    color: #2b2a2a;
 }
 
-.main-nav ul {
+.logo {
+    padding-left: 100px;
+}
+
+/* Main nav container */
+.main-nav {
     display: flex;
-    gap: 20px;
-    list-style: none; /* Remove bullet points */
+    align-items: center;
+    gap: 100px; /* space between left and right nav */
 }
 
+/* Left links */
+.nav-left {
+    display: flex;
+    gap: 50px; /* spacing between main nav items */
+    list-style: none;
+}
+
+/* Right links */
+.nav-right {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+    margin-left: 100px;
+}
+
+/* Push right links to far right */
+.nav-right {
+    padding-right: 100px;
+}
+
+/* Links styling */
 .main-nav a {
     text-decoration: none;
     color: #333;
@@ -51,6 +78,7 @@ body {
 .main-nav a:hover {
     color: #ff7f50;
 }
+
 
 /* ===== HERO SECTION ===== */
 /* Hero section container */
