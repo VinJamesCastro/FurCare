@@ -3,327 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FurCare</title>
-
+    <title>FurCare - Trusted Pet Sitters & Dog Walkers</title>
+    <meta name="description" content="Book verified pet sitters and dog walkers in your city. Background-checked, insured, and trusted by pet owners.">
+    
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
     <!-- ===== HEADER ===== -->
-<header class="site-header">
-    <!-- Logo + Text container -->
-    <div class="logo-container">
-        <!-- Circular Logo with Emoji -->
-        <div class="logo">
-            <span class="emoji">🐾</span>
+    <header class="site-header">
+        <div class="logo-container">
+            <div class="logo">
+                <span class="emoji">🐾</span>
+            </div>
+            <h1 class="header">FurCare</h1>
         </div>
 
-        <!-- Site Name -->
-        <h1 class="header">FurCare</h1>
-    </div>
+        <nav class="main-nav">
+            <ul class="nav-left">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#trust">Trust & Safety</a></li>
+            </ul>
 
-    <!-- Main Navigation links -->
-    <nav class="main-nav">
-        <!-- Left links: main nav -->
-        <ul class="nav-left">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#howitworks">How It Works</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
+            <ul class="nav-right">
+                <li><a href="#become-sitter">Become a Sitter</a></li>
+                <li><a href="#get-started">Get Started</a></li>
+            </ul>
+        </nav>
 
-        <!-- Right links: auth -->
-        <ul class="nav-right">
-            <li><a href="#sign-in">Sign In</a></li>
-            <li><a href="#sign-up">Get Started</a></li>
-        </ul>
-    </nav>
-</header>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
 
+    <!-- ===== HERO SECTION ===== -->
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Trusted Pet Sitters & <br>
+                    <span class="highlight">Dog Walkers Near You</span>
+                </h1>
 
-<!-- ===== HERO SECTION ===== -->
-<section id="hero" class="hero-section">
-    <div class="hero-container"> <!-- Flex container for text + image -->
+                <p class="hero-subtitle">
+                    Book verified, background-checked pet sitters and dog walkers in your neighborhood. From daily walks to overnight care, we've got your furry friend covered.
+                </p>
 
-        <!-- Left side: Text content -->
-        <div class="hero-text">
-            <!-- Main heading with gradient highlight -->
-            <h1 class="hero-title">
-                Complete Pet Care <br>
-                <span class="highlight">At Your Fingertips</span>
-            </h1>
+                <div class="hero-actions">
+                    <a href="#get-started" class="btn-primary">Find a Sitter</a>
+                    <a href="#become-sitter" class="btn-secondary">
+                        <span class="play-icon">▶</span> Become a Sitter
+                    </a>
+                </div>
 
-            <!-- Subtitle / description -->
-            <p class="hero-subtitle">
-                FurCare is the all-in-one platform connecting pet owners with services, 
-                health tracking, social features, and expert care. Everything your furry friend needs in one place.
-            </p>
-            
-
-            <!-- Buttons container -->
-            <div class="hero-actions">
-                <!-- Primary call-to-action button -->
-                <a href="#sign-up" class="btn-primary">Get Started - It's Free</a>
-                <!-- Secondary action button -->
-                <a href="#demo" class="btn-secondary">
-                    <span class="play-icon">▶</span> Watch Demo
-                </a>
+                <div class="hero-checklist">
+                    <span><span class="check">✓</span> Background checked</span>
+                    <span><span class="check">✓</span> Insured providers</span>
+                    <span><span class="check">✓</span> 24/7 support</span>
+                </div>
             </div>
 
-            <!-- Checklist / bullet points below buttons -->
-            <div class="hero-checklist">
-                <span><span class="check">✓</span> No credit card required</span>
-                <span><span class="check">✓</span> 14-day free trial</span>
-                <span><span class="check">✓</span> Cancel anytime</span>
-            </div>
-        </div>
+            <div class="hero-visual">
+                <div class="image-wrapper">
+                    <img src="assets/images/pet_hero.jpg" alt="Dog licking nose" class="main-img" />
+                    
+                    <div class="floating-card health-check">
+                        <div class="card-icon check-circle">✓</div>
+                        <div class="card-content">
+                            <strong>Verified Sitter</strong>
+                            <p>Background checked</p>
+                        </div>
+                    </div>
 
-        <!-- Right side: Visual / Image -->
-        <div class="hero-visual">
-            <div class="image-wrapper"> <!-- Relative container for floating cards -->
-                <!-- Main hero image -->
-                <img src="assets/images/pet_hero.jpg" alt="Dog licking nose" class="main-img" />
-                
-                <!-- Floating card: Health check -->
-                <div class="floating-card health-check">
-                    <div class="card-icon check-circle">✓</div> <!-- Icon inside card -->
-                    <div class="card-content">
-                        <strong>Health Check Complete</strong> <!-- Card title -->
-                        <p>Max is doing great!</p> <!-- Card subtitle -->
+                    <div class="floating-card walker-status">
+                        <div class="card-icon target-icon">🎯</div>
+                        <div class="card-content">
+                            <strong>Walker On The Way</strong>
+                            <p>Sarah • 5 min away</p>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Floating card: Walker status -->
-                <div class="floating-card walker-status">
-                    <div class="card-icon target-icon">🎯</div> <!-- Icon inside card -->
-                    <div class="card-content">
-                        <strong>Walker Arriving Soon</strong>
-                        <p>Sarah • 5 min away</p>
-                    </div>
-                </div>
-
             </div>
         </div>
-
-    </div>
-</section>
-
-
-   <!-- ===== FEATURES SECTION ===== -->
-<section id="features" class="features-section">
-
-    <!-- Section heading -->
-    <div class="section-header">
-        <h2>Everything You Need for Pet Care</h2>
-        <p>
-            FurCare focuses on essential tools that make booking, managing, and caring for your pets simple and stress-free.
-        </p>
-    </div>
-
-    <!-- Core Features Grid -->
-    <div class="features-grid">
-
-        <!-- Feature 1 -->
-        <div class="feature-card">
-            <div class="icon-box blue">📅</div>
-            <h3>Service Marketplace</h3>
-            <p>
-                Discover and book trusted pet sitters, walkers, and groomers — all in one place.
-            </p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="feature-card">
-            <div class="icon-box purple">🐾</div>
-            <h3>Pet Profiles</h3>
-            <p>
-                Keep important details, preferences, and notes for each of your pets organized.
-            </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="feature-card">
-            <div class="icon-box green">⭐</div>
-            <h3>Reviews & Ratings</h3>
-            <p>
-                Make confident decisions by viewing honest feedback from other pet owners.
-            </p>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="feature-card">
-            <div class="icon-box orange">🔔</div>
-            <h3>Booking Notifications</h3>
-            <p>
-                Get updates and reminders for upcoming services so nothing is missed.
-            </p>
-        </div>
-
-        <!-- Feature 5 -->
-        <div class="feature-card">
-            <div class="icon-box red">⚡</div>
-            <h3>Instant Bookings</h3>
-            <p>
-                Request and confirm services quickly without unnecessary back-and-forth.
-            </p>
-        </div>
-
-        <!-- Feature 6 -->
-        <div class="feature-card">
-            <div class="icon-box pink">🔒</div>
-            <h3>Verified Providers</h3>
-            <p>
-                Work with trusted service providers who meet FurCare’s quality standards.
-            </p>
-        </div>
-
-    </div>
-
-    <!-- Future Features Strip -->
-    <div class="extra-features-strip">
-        <h3>Planned Features</h3>
-
-        <div class="extra-icons-container">
-            <div class="extra-item">
-                <div class="small-icon">🧠</div>
-                <span>AI Pet Assistant</span>
-            </div>
-            <div class="extra-item">
-                <div class="small-icon">❤️</div>
-                <span>Health Tracking</span>
-            </div>
-            <div class="extra-item">
-                <div class="small-icon">📍</div>
-                <span>GPS Pet Tracking</span>
-            </div>
-            <div class="extra-item">
-                <div class="small-icon">🐕</div>
-                <span>Pet Social Features</span>
-            </div>
-            <div class="extra-item">
-                <div class="small-icon">🛒</div>
-                <span>Pet Store</span>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-
-    <!-- ==== HOW IT WORKS SECTION === -->
-     <section id="howitworks" class="how-section">
-
-        <!-- SECTION HEADING-->
-         <div class="section-header">
-            <h2>How FurCare Works</h2>
-            <p>Get started in minutes. Our simple process makes pet care management effortless.</p>
-         </div>
-
-
-        <!-- STEPS -->
-         <div class="steps-grid">
-
-            <!-- Step 1-->
-             <div class="step-box">
-                <div class="step-number">01</div>
-
-                <div class="step-icon-blue">
-                    <span class="fa-solid fa-user-plus" aria-hidden="true"></span>
-                </div>
-
-                <h3>Create Your Account</h3>
-                <p>Sign up for free and create profiles for your pets. Add basic details, photos, and important information.</p>
-             </div>
-
-             <!-- Step 2-->
-             <div class="step-box">
-                <div class="step-number">02</div>
-
-                <div class="step-icon-purple">
-                    <span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span>
-                </div>
-
-                <h3>Browse & Discover</h3>
-                <p>Discover available services and tools designed to help you manage your pet’s daily needs.</p>
-             </div>
-
-
-            <!-- Step 3-->
-             <div class="step-box">
-                <div class="step-number">03</div>
-
-                <div class="step-icon-pink">
-                     <span class="fa-solid fa-calendar-check" aria-hidden="true"></span>
-                </div>
-
-                <h3>Book Services</h3>
-                <p>Schedule services, keep records organized, and manage everything in one place.</p>
-            </div>
-
-
-            <!-- Step 4-->
-             <div class="step-box">
-                <div class="step-number">04</div>
-
-                <div class="step-icon-green">
-                <span class="fa-solid fa-circle-check" aria-hidden="true"></span>
-                </div>
-
-                <h3>Stay in Control</h3>
-                <p>Access your pet’s information anytime and get support when you need it.</p>
-            </div>
-
-         </div>
-     </section>
-
-
-     <!-- REVIEWS -->
-     <section class="reviews">
-        <div class="reviews-header">
-            <h2>Loved by Fur Parents Everywhere</h2>
-             <p>FurCare is launching soon. Reviews will appear here as our community grows.</p>
-
-            <div class="reviews-placeholder">
-
-        <!--REVIEWS CARD-->
-    <div class="placeholder-card">
-      <div class="quote-icon">“</div>
-
-      <p class="placeholder-text">
-        Be one of the first pet parents to share your experience with FurCare.
-      </p>
-
-      <button class="notify-btn">Get Notified at Launch</button>
-    </div>
-  </div>
-</section>
-
-
-      
-
-     
-
-
-
-    <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="about-section">
-        <h2>About FurCare</h2>
-        <p>FurCare provides trusted, reliable pet care services. From sitting to grooming, we ensure your furry friends are happy and safe while you’re away.</p>
     </section>
 
-    
+    <!-- ===== SERVICES SECTION ===== -->
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <h2>Pet Care Services You Can Trust</h2>
+            <p>Professional care for your pets, from daily walks to extended stays. All providers are verified and insured.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Pet Sitting</h3>
+                <p>Overnight and house sitting services. Your pet stays comfortable in their own home while you're away.</p>
+                <p class="service-price">Starting at $35/night</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚶</div>
+                <h3>Dog Walking</h3>
+                <p>30 or 60-minute walks scheduled around your busy day. Keep your dog happy, healthy, and exercised.</p>
+                <p class="service-price">Starting at $20/walk</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">❤️</div>
+                <h3>Special Care</h3>
+                <p>Senior pet care, post-surgery support, and medication administration from experienced providers.</p>
+                <p class="service-price">Starting at $45/visit</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES SECTION ===== -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Everything You Need to Book with Confidence</h2>
+            <p>Our platform makes finding, booking, and managing pet care simple and stress-free.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-box blue">📅</div>
+                <h3>Easy Booking</h3>
+                <p>Browse available sitters, check calendars, and book services in just a few clicks.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box purple">⭐</div>
+                <h3>Reviews & Ratings</h3>
+                <p>Read honest feedback from other pet owners to find the perfect match for your furry friend.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box green">✓</div>
+                <h3>Verified Providers</h3>
+                <p>Every sitter undergoes background checks, reference verification, and interview process.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box orange">💬</div>
+                <h3>Direct Messaging</h3>
+                <p>Communicate with sitters before and during bookings to ensure your pet's needs are met.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box pink">💳</div>
+                <h3>Secure Payments</h3>
+                <p>Pay safely through our platform with escrow protection and transparent pricing.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box cyan">🔔</div>
+                <h3>Photo Updates</h3>
+                <p>Get real-time updates and photos of your pet during their service appointments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS SECTION ===== -->
+    <section id="how-it-works" class="how-section">
+        <div class="section-header">
+            <h2>How FurCare Works</h2>
+            <p>Get started in minutes. Our simple process makes finding pet care effortless.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-box">
+                <div class="step-number">STEP 01</div>
+                <div class="step-icon-blue">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <h3>Create Your Profile</h3>
+                <p>Sign up for free and add your pet's details, special needs, and preferences.</p>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">STEP 02</div>
+                <div class="step-icon-purple">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3>Browse Sitters</h3>
+                <p>Search verified sitters in your area, read reviews, and compare rates.</p>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">STEP 03</div>
+                <div class="step-icon-pink">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h3>Book & Pay Securely</h3>
+                <p>Request a booking, confirm details, and pay safely through our platform.</p>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">STEP 04</div>
+                <div class="step-icon-green">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3>Relax & Get Updates</h3>
+                <p>Receive photo updates during service and leave a review afterward.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRUST & SAFETY SECTION ===== -->
+    <section id="trust" class="trust-section">
+        <div class="section-header">
+            <h2>Your Pet's Safety Is Our Priority</h2>
+            <p>We go the extra mile to ensure every sitter meets our strict standards.</p>
+        </div>
+
+        <div class="trust-grid">
+            <div class="trust-card">
+                <div class="trust-icon">🛡️</div>
+                <h3>Background Checks</h3>
+                <p>Every sitter undergoes comprehensive criminal background screening.</p>
+            </div>
+
+            <div class="trust-card">
+                <div class="trust-icon">📋</div>
+                <h3>Insurance Coverage</h3>
+                <p>All bookings are backed by liability insurance for peace of mind.</p>
+            </div>
+
+            <div class="trust-card">
+                <div class="trust-icon">💬</div>
+                <h3>24/7 Support</h3>
+                <p>Our customer support team is available anytime you need assistance.</p>
+            </div>
+
+            <div class="trust-card">
+                <div class="trust-icon">💯</div>
+                <h3>Satisfaction Guarantee</h3>
+                <p>Not happy with your service? We'll make it right or refund your booking.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section id="get-started" class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Find the Perfect Pet Sitter?</h2>
+            <p>Join thousands of pet owners who trust FurCare for their pet care needs. Get started today—it's free!</p>
+            
+            <form class="email-form" id="emailForm">
+                <input 
+                    type="email" 
+                    class="email-input" 
+                    placeholder="Enter your email address"
+                    required
+                    id="emailInput"
+                />
+                <button type="submit" class="email-submit">Get Started Free</button>
+            </form>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="site-footer">
-        <p>© 2025 FurCare. All rights reserved.</p>
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="brand-header">
+                        <div class="footer-logo">🐾</div>
+                        <div>
+                            <h3 class="brand-name">FurCare</h3>
+                            <span class="brand-tagline">Trusted Pet Care Marketplace</span>
+                        </div>
+                    </div>
+
+                    <p class="brand-desc">
+                        Connecting pet owners with verified, background-checked pet sitters and dog walkers. Safe, reliable pet care in your neighborhood.
+                    </p>
+
+                    <div class="social-icons">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-col">
+                        <h4>For Pet Owners</h4>
+                        <ul>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#">Find a Sitter</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-col">
+                        <h4>For Sitters</h4>
+                        <ul>
+                            <li><a href="#become-sitter">Become a Sitter</a></li>
+                            <li><a href="#">Sitter Requirements</a></li>
+                            <li><a href="#">How You Earn</a></li>
+                            <li><a href="#">Sitter Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#trust">Trust & Safety</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FurCare. All rights reserved.</p>
+
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- Link to external JavaScript file -->
+    <script src="js/script.js"></script>
 
 </body>
-
-
-
-
+</html>
