@@ -2,218 +2,210 @@
    FURCARE MARKETPLACE - MAIN JAVASCRIPT
    ===================================================== */
 
-// ===== MOBILE MENU TOGGLE =====
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const mainNav = document.querySelector('.main-nav');
-const body = document.body;
+// ===== CONSTANTS =====
+const MOBILE_BREAKPOINT = 768;
+const SCROLL_THRESHOLD = 50;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-if (mobileMenuToggle && mainNav) {
+// ===== MOBILE MENU MODULE =====
+(function initMobileMenu() {
+    const elements = {
+        toggle: document.querySelector('.mobile-menu-toggle'),
+        nav: document.querySelector('.main-nav'),
+        icon: null,
+        body: document.body
+    };
     
-    // Open/close menu on button click
-    mobileMenuToggle.addEventListener('click', () => {
-        // 1. Toggle menu visibility
-        mainNav.classList.toggle('is-open');
-
-         // 2. Toggle button state
-        mobileMenuToggle.classList.toggle('active');
-
-         // 3. Toggle overlay
-        body.classList.toggle('menu-open');
+    // Early return if elements don't exist
+    if (!elements.toggle || !elements.nav) return;
+    
+    elements.icon = elements.toggle.querySelector('i');
+    if (!elements.icon) return;
+    
+    // State management
+    const menuState = {
+        isOpen: false
+    };
+    
+    // Menu control functions
+    function openMenu() {
+        menuState.isOpen = true;
+        elements.nav.classList.add('is-open');
+        elements.toggle.classList.add('active');
+        elements.body.classList.add('menu-open');
+        elements.icon.className = 'fas fa-times';
+    }
+    
+    function closeMenu() {
+        menuState.isOpen = false;
+        elements.nav.classList.remove('is-open');
+        elements.toggle.classList.remove('active');
+        elements.body.classList.remove('menu-open');
+        elements.icon.className = 'fas fa-bars';
+    }
+    
+    function toggleMenu() {
+        menuState.isOpen ? closeMenu() : openMenu();
+    }
+    
+    // Event handlers
+    elements.toggle.addEventListener('click', toggleMenu);
+    
+    // Close on link click
+    elements.nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+    
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (!menuState.isOpen) return;
         
-        // 4. Change icon
-        const icon = mobileMenuToggle.querySelector('i');
-        if (mainNav.classList.contains('is-open')) {
-            icon.className = 'fas fa-times'; // X icon
-        } else {
-            icon.className = 'fas fa-bars'; // Hamburger icon
-        }
-    });
-    
-    // Close menu when clicking a link
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mainNav.classList.remove('is-open');
-            mobileMenuToggle.classList.remove('active');
-            body.classList.remove('menu-open');
-            
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.className = 'fas fa-bars';
-        });
-    });
-    
-    // Close menu when clicking overlay (outside menu)
-    document.addEventListener('click', (event) => {
-        const isClickInsideNav = mainNav.contains(event.target);
-        const isClickOnToggle = mobileMenuToggle.contains(event.target);
+        const isClickInside = elements.nav.contains(e.target) || 
+                             elements.toggle.contains(e.target);
         
-        if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('is-open')) {
-            mainNav.classList.remove('is-open');
-            mobileMenuToggle.classList.remove('active');
-            body.classList.remove('menu-open');
-            
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.className = 'fas fa-bars';
-        }
+        if (!isClickInside) closeMenu();
     });
     
-    // Close menu on ESC key
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && mainNav.classList.contains('is-open')) {
-            mainNav.classList.remove('is-open');
-            mobileMenuToggle.classList.remove('active');
-            body.classList.remove('menu-open');
-            
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.className = 'fas fa-bars';
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuState.isOpen) {
+            closeMenu();
         }
     });
-}
+})();
 
-// ===== EMAIL FORM VALIDATION =====
-const emailForm = document.getElementById('emailForm');
-const emailInput = document.getElementById('emailInput');
-
-if (emailForm) {
-    emailForm.addEventListener('submit', (e) => {
+// ===== EMAIL FORM MODULE =====
+(function initEmailForm() {
+    const form = document.getElementById('emailForm');
+    const input = document.getElementById('emailInput');
+    
+    if (!form || !input) return;
+    
+    function validateEmail(email) {
+        return EMAIL_REGEX.test(email);
+    }
+    
+    function handleSubmit(e) {
         e.preventDefault();
         
-        const email = emailInput.value.trim();
+        const email = input.value.trim();
         
-        // Basic email validation regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        if (!emailRegex.test(email)) {
+        if (!validateEmail(email)) {
             alert('Please enter a valid email address');
-            emailInput.focus();
+            input.focus();
             return;
         }
         
-        // Success message (in production, this would send to your backend)
+        // Success
         alert(`Thank you! We'll send updates to ${email}`);
-        emailInput.value = '';
+        input.value = '';
         
+        // TODO: Send to backend API
+        // submitToBackend(email);
+    }
+    
+    // Focus styles
+    input.addEventListener('focus', () => {
+        input.style.borderColor = '#a855f7';
+        input.style.outline = 'none';
     });
-}
+    
+    input.addEventListener('blur', () => {
+        input.style.borderColor = 'rgba(255,255,255,0.2)';
+    });
+    
+    form.addEventListener('submit', handleSubmit);
+})();
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const target = document.querySelector(targetId);
-        
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+// ===== SMOOTH SCROLL MODULE =====
+(function initSmoothScroll() {
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    
+    anchors.forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
             
-            // Close mobile menu if open
-            if (window.innerWidth <= 768 && mainNav) {
-                mainNav.style.display = 'none';
+            // Skip empty or just '#'
+            if (!href || href === '#') return;
+            
+            e.preventDefault();
+            
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } catch (error) {
+                console.warn(`Invalid selector: ${href}`, error);
             }
-        }
+        });
     });
-});
+})();
 
-// ===== SCROLL ANIMATIONS FOR CARDS =====
-// This adds a fade-in effect when cards scroll into view
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const fadeInObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Apply fade-in effect to all cards on page load
-document.addEventListener('DOMContentLoaded', () => {
+// ===== SCROLL ANIMATIONS MODULE =====
+(function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
         '.feature-card, .service-card, .step-box, .trust-card'
     );
     
+    if (animatedElements.length === 0) return;
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Initialize
     animatedElements.forEach(element => {
-        // Set initial state (invisible and shifted down)
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
-        // Start observing
-        fadeInObserver.observe(element);
+        observer.observe(element);
     });
-});
+})();
 
-// ===== HEADER SCROLL EFFECT (OPTIONAL) =====
-// Adds a shadow to header when scrolling down
-let lastScroll = 0;
-const header = document.querySelector('.site-header');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+// ===== HEADER SCROLL EFFECT MODULE =====
+(function initHeaderScroll() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
     
-    if (currentScroll > 50) {
-        header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-    } else {
-        header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
+    let ticking = false;
+    
+    function updateHeader(scrollPos) {
+        const shadowIntensity = scrollPos > SCROLL_THRESHOLD 
+            ? '0 4px 12px rgba(0,0,0,0.1)' 
+            : '0 2px 8px rgba(0,0,0,0.05)';
+        
+        header.style.boxShadow = shadowIntensity;
     }
     
-    lastScroll = currentScroll;
-});
-
-// ===== FORM INPUT ENHANCEMENTS =====
-// Add focus styling to email input
-if (emailInput) {
-    emailInput.addEventListener('focus', () => {
-        emailInput.style.borderColor = '#a855f7';
-        emailInput.style.outline = 'none';
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateHeader(window.pageYOffset);
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
-    
-    emailInput.addEventListener('blur', () => {
-        emailInput.style.borderColor = 'rgba(255,255,255,0.2)';
-    });
+})();
+
+// ===== DEV CONSOLE MESSAGE =====
+if (console && console.log) {
+    console.log(
+        '%cFurCare 🐾',
+        'font-size: 20px; font-weight: bold; color: #a855f7;'
+    );
 }
-
-// ===== UTILITY FUNCTIONS =====
-
-/**
- * Validate email format
- * @param {string} email - Email address to validate
- * @returns {boolean} - True if valid, false otherwise
- */
-function isValidEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
-
-/**
- * Scroll to top function (can be triggered by a button)
- */
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// ===== CONSOLE MESSAGE =====
-// Optional: Let developers know you're hiring or open to collaboration
-console.log(
-    '%cFurCare 🐾',
-    'font-size: 20px; font-weight: bold; color: #a855f7;'
-);
-console.log(
-    '%cInterested in our tech stack? We\'re building with Node.js, PostgreSQL, and React.',
-    'font-size: 12px; color: #6b7280;'
-);
-console.log(
-    '%cContact: support@furcare.com',
-    'font-size: 12px; color: #6b7280;'
-);
