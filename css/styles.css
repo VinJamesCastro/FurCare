@@ -200,6 +200,7 @@ body {
 
 .nav-left, .nav-right {
     display: flex;
+    align-items: center;
     gap: var(--space-3xl);
     list-style: none;
 }
@@ -215,6 +216,7 @@ body {
 .main-nav a:hover {
     color: var(--color-primary);
 }
+
 
 /* Mobile menu toggle (hidden by default) */
 .mobile-menu-toggle {
@@ -278,6 +280,25 @@ body {
 }
 
 /* Button Styles */
+.btn-right-nav {
+    padding: var(--space-md) var(--space-md);
+    background: var(--gradient-primary);
+    color: var(--color-bg-primary) !important;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-md);
+    display: inline-block;
+    box-shadow: var(--shadow-primary);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-right-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary-hover);
+}
+
+
 .btn-primary {
     padding: var(--space-md) var(--space-4xl);
     background: var(--gradient-primary);
@@ -290,6 +311,7 @@ body {
     box-shadow: var(--shadow-primary);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
+
 
 .btn-primary:hover {
     transform: translateY(-2px);
@@ -937,7 +959,7 @@ body {
     
     .main-nav.is-open a:hover {
         color: var(--color-primary);
-        padding-left: 10px;
+        
     }
     
     .main-nav.is-open .nav-right {
@@ -1015,4 +1037,27 @@ body {
         flex-wrap: wrap;
         gap: var(--space-2xl);
     }
+
+    /* --- MOBILE MENU FIXES --- */
+    
+    /* 1. Nuke the grey borders on the action items */
+    .main-nav.is-open .nav-right li {
+        border-bottom: none;
+        text-align: center;
+    }
+
+    .main-nav.is-open .nav-left li {
+        border-bottom: none;
+        text-align: center;
+    }
+
+    /* 2. Force the button to respect our padding and shape using your exact class */
+    .main-nav.is-open a.btn-right-nav {
+        display: inline-block; 
+        padding: 12px 32px; /* The !important forces the space back! */
+        width: auto; /* Prevents it from stretching full-width */
+        margin-top: 15px;
+    }
+
+    
 }
