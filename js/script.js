@@ -1,13 +1,9 @@
-/* =====================================================
-   FURCARE MARKETPLACE - MAIN JAVASCRIPT
-   ===================================================== */
-
-// ===== CONSTANTS =====
+// Constants
 const MOBILE_BREAKPOINT = 768;
 const SCROLL_THRESHOLD = 50;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// ===== MOBILE MENU MODULE =====
+// Mobile menu
 (function initMobileMenu() {
     const elements = {
         toggle: document.querySelector('.mobile-menu-toggle'),
@@ -16,18 +12,18 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         body: document.body
     };
     
-    // Early return if elements don't exist
+    // bail out if missing
     if (!elements.toggle || !elements.nav) return;
     
     elements.icon = elements.toggle.querySelector('i');
     if (!elements.icon) return;
     
-    // State management
+    // track open/closed state
     const menuState = {
         isOpen: false
     };
     
-    // Menu control functions
+    // open / close / toggle
     function openMenu() {
         menuState.isOpen = true;
         elements.nav.classList.add('is-open');
@@ -48,15 +44,15 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         menuState.isOpen ? closeMenu() : openMenu();
     }
     
-    // Event handlers
+    // events
     elements.toggle.addEventListener('click', toggleMenu);
     
-    // Close on link click
+    // close when nav link clicked
     elements.nav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
     
-    // Close on outside click
+    // close when clicking outside
     document.addEventListener('click', (e) => {
         if (!menuState.isOpen) return;
         
@@ -66,7 +62,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!isClickInside) closeMenu();
     });
     
-    // Close on ESC key
+    // ESC key closes menu
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menuState.isOpen) {
             closeMenu();
@@ -74,7 +70,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     });
 })();
 
-// ===== EMAIL FORM MODULE =====
+// cta email form
 (function initEmailForm() {
     const form = document.getElementById('emailForm');
     const input = document.getElementById('emailInput');
@@ -96,7 +92,6 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return;
         }
         
-        // Success
         alert(`Thank you! We'll send updates to ${email}`);
         input.value = '';
         
@@ -104,7 +99,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         // submitToBackend(email);
     }
     
-    // Focus styles
+    // highlight border on focus
     input.addEventListener('focus', () => {
         input.style.borderColor = '#a855f7';
         input.style.outline = 'none';
@@ -117,7 +112,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     form.addEventListener('submit', handleSubmit);
 })();
 
-// ===== SMOOTH SCROLL MODULE =====
+// Smooth scroll
 (function initSmoothScroll() {
     const anchors = document.querySelectorAll('a[href^="#"]');
     
@@ -145,7 +140,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     });
 })();
 
-// ===== SCROLL ANIMATIONS MODULE =====
+// Scroll animations
 (function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
         '.feature-card, .service-card, .step-box'
@@ -167,7 +162,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         });
     }, observerOptions);
     
-    // Initialize
+   // Set initial styles
     animatedElements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
@@ -176,7 +171,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     });
 })();
 
-// ===== HEADER SCROLL EFFECT MODULE =====
+// Header shadow on scroll
 (function initHeaderScroll() {
     const header = document.querySelector('.site-header');
     if (!header) return;
@@ -202,7 +197,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     });
 })();
 
-// ===== DEV CONSOLE MESSAGE =====
+// dev message
 if (console && console.log) {
     console.log(
         '%cFurCare 🐾',

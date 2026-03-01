@@ -1,4 +1,4 @@
- // ===== TAB SWITCHER =====
+        // Tab switcher
         function switchTab(tab) {
             const slider = document.getElementById('tabSlider');
             const signinTab = document.getElementById('signinTab');
@@ -21,7 +21,7 @@
             }
         }
 
-        // ===== PASSWORD TOGGLE =====
+        // Password toggle
         function togglePassword(inputId, icon) {
             const input = document.getElementById(inputId);
             const isHidden = input.type === 'password';
@@ -31,7 +31,7 @@
                 : 'fa-regular fa-eye toggle-password';
         }
 
-        // ===== VALIDATION HELPERS =====
+        // Validation
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         function setError(fieldId, hasError) {
@@ -45,7 +45,7 @@
         }
 
 
-        // ===== AUTO TAB FROM URL =====
+        // Open correct tab based on URL
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             if (params.get('tab') === 'signup') {
@@ -53,7 +53,7 @@
             }
         });
 
-        // ===== SIGN IN FORM =====
+        // Sign in form
         document.getElementById('signinForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('signinEmail').value.trim();
@@ -69,7 +69,7 @@
             }
         });
 
-        // ===== SIGN UP FORM =====
+        // Sign up form
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('signupEmail').value.trim();
@@ -87,7 +87,7 @@
             }
         });
 
-        // ===== CLEAR ERRORS ON INPUT =====
+        // Clear errors on input
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', () => {
                 const field = input.closest('.field-group');
