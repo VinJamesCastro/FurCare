@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurCare - Sign In / Sign Up</title>
+    <meta name="description" content="Sign in or create your FurCare account to find trusted pet sitters and dog walkers.">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Auth Styles -->
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+
+    <!-- Background blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="auth-header">
+        <a href="index.html" class="auth-logo">
+            <div class="logo-icon">🐾</div>
+            <span class="logo-name">FurCare</span>
+        </a>
+    </header>
+
+    <!-- Main -->
+    <main class="auth-main">
+        <div class="auth-card">
+
+            <!-- Toggle Tabs -->
+            <div class="auth-tabs" role="tablist">
+                <div class="tab-slider" id="tabSlider"></div>
+                <button class="tab-btn active" id="signinTab" role="tab" onclick="switchTab('signin')">Sign In</button>
+                <button class="tab-btn" id="signupTab" role="tab" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- ===== SIGN IN PANEL ===== -->
+            <div class="form-panel active" id="signinPanel">
+                <div class="form-header">
+                    <h1>Welcome back 👋</h1>
+                    <p>Sign in to manage your bookings and pet care.</p>
+                </div>
+
+                <!-- Social -->
+                <div class="social-btns">
+                    <a href="#" class="social-btn">
+                        <i class="fa-brands fa-google"></i> Google
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fa-brands fa-facebook-f"></i> Facebook
+                    </a>
+                </div>
+
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span>or continue with email</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <form id="signinForm" novalidate>
+                    <div class="field-group" id="signinEmailField">
+                        <label for="signinEmail">Email address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="signinEmail" placeholder="you@example.com" autocomplete="email" />
+                        </div>
+                        <span class="error-msg">Please enter a valid email address.</span>
+                    </div>
+
+                    <div class="field-group" id="signinPasswordField">
+                        <label for="signinPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="signinPassword" placeholder="Enter your password" autocomplete="current-password" />
+                            <i class="fa-regular fa-eye toggle-password" onclick="togglePassword('signinPassword', this)"></i>
+                        </div>
+                        <span class="error-msg">Password is required.</span>
+                    </div>
+
+                    <div class="forgot-row">
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Sign In</button>
+                </form>
+
+                <div class="switch-prompt">
+                    Don't have an account? <button onclick="switchTab('signup')">Sign up free</button>
+                </div>
+            </div>
+
+            <!-- ===== SIGN UP PANEL ===== -->
+            <div class="form-panel" id="signupPanel">
+                <div class="form-header">
+                    <h1>Create your account 🐾</h1>
+                    <p>Find trusted pet sitters in your neighborhood.</p>
+                </div>
+
+                <!-- Social -->
+                <div class="social-btns">
+                    <a href="#" class="social-btn">
+                        <i class="fa-brands fa-google"></i> Google
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fa-brands fa-facebook-f"></i> Facebook
+                    </a>
+                </div>
+
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span>or continue with email</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <form id="signupForm" novalidate>
+                    <div class="field-group" id="signupEmailField">
+                        <label for="signupEmail">Email address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" />
+                        </div>
+                        <span class="error-msg">Please enter a valid email address.</span>
+                    </div>
+
+                    <div class="field-group" id="signupPasswordField">
+                        <label for="signupPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="signupPassword" placeholder="Create a password" autocomplete="new-password" />
+                            <i class="fa-regular fa-eye toggle-password" onclick="togglePassword('signupPassword', this)"></i>
+                        </div>
+                        <span class="error-msg">Password must be at least 8 characters.</span>
+                    </div>
+
+                    <div class="field-group" id="signupConfirmField">
+                        <label for="signupConfirm">Confirm password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="signupConfirm" placeholder="Repeat your password" autocomplete="new-password" />
+                            <i class="fa-regular fa-eye toggle-password" onclick="togglePassword('signupConfirm', this)"></i>
+                        </div>
+                        <span class="error-msg">Passwords do not match.</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Create Account</button>
+
+                    <p class="terms-text">
+                        By creating an account you agree to our
+                        <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                    </p>
+                </form>
+
+                <div class="switch-prompt">
+                    Already have an account? <button onclick="switchTab('signin')">Sign in</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Auth Script -->
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

@@ -1013,8 +1013,7 @@ body {
     
     .services-grid,
     .features-grid,
-    .steps-grid,
-    .trust-grid {
+    .steps-grid{
         grid-template-columns: 1fr;
     }
     
@@ -1051,11 +1050,11 @@ body {
     }
 
     /* 2. Force the button to respect our padding and shape using your exact class */
-    .main-nav.is-open a.btn-right-nav {
-        display: inline-block; 
-        padding: 12px 32px; /* The !important forces the space back! */
-        width: auto; /* Prevents it from stretching full-width */
-        margin-top: 15px;
+   .main-nav.is-open a.btn-right-nav {
+    display: inline-block;
+    padding: 12px 32px;
+    width: auto;
+    margin-top: 15px;
     }
 
     
