@@ -281,7 +281,7 @@ body {
 
 /* Button Styles */
 .btn-right-nav {
-    padding: var(--space-md) var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     background: var(--gradient-primary);
     color: var(--color-bg-primary) !important;
     border-radius: var(--radius-full);
@@ -294,7 +294,7 @@ body {
 }
 
 .btn-right-nav:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: var(--shadow-primary-hover);
 }
 
@@ -891,8 +891,7 @@ body {
     }
     
     .services-grid,
-    .features-grid,
-    .trust-grid {
+    .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     

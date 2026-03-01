@@ -148,7 +148,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // ===== SCROLL ANIMATIONS MODULE =====
 (function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
-        '.feature-card, .service-card, .step-box, .trust-card'
+        '.feature-card, .service-card, .step-box'
     );
     
     if (animatedElements.length === 0) return;
