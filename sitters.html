@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurCare - Become a Pet Sitter</title>
+    <meta name="description" content="Get paid to care for pets on your own schedule. Join FurCare as a verified pet sitter or dog walker.">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Sitters page styles -->
+    <link rel="stylesheet" href="css/sitters.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <div class="logo">
+                    <span class="emoji">🐾</span>
+                </div>
+                <h1 class="header">FurCare</h1>
+            </a>
+        </div>
+
+        <nav class="main-nav">
+            <ul class="nav-left">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="for-sitters.html" class="nav-active">For Sitters</a></li>
+            </ul>
+
+            <ul class="nav-right">
+                <li><a href="auth.html">Sign In</a></li>
+                <li><a href="auth.html?tab=signup&intent=sitter" class="btn-right-nav">Apply Now</a></li>
+            </ul>
+        </nav>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="sitter-hero">
+            <div class="sitter-hero-container">
+                <div class="sitter-hero-text">
+                    <div class="hero-badge">🐾 Now accepting sitters in your area</div>
+                    <h1 class="sitter-hero-title">
+                        Get paid to walk dogs<br>
+                        and <span class="sitter-highlight">cuddle cats.</span>
+                    </h1>
+                    <p class="sitter-hero-subtitle">
+                        Earn flexible income on your own schedule while building meaningful connections in your local community. No commute, no boss, just you and the pets you love.
+                    </p>
+                    <a href="auth.html?tab=signup&intent=sitter" class="btn-primary">Apply Now — It's Free</a>
+
+                    <div class="sitter-hero-stats">
+                        <div class="hero-stat">
+                            <i class="fa-solid fa-dollar-sign"></i>
+                            <span>Avg ₱15000/month</span>
+                        </div>
+                        <div class="hero-stat">
+                            <i class="fa-regular fa-calendar"></i>
+                            <span>Your schedule</span>
+                        </div>
+                        <div class="hero-stat">
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9 avg sitter rating</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sitter-hero-visual">
+                    <div class="sitter-image-wrapper">
+                        <img src="assets/images/sitter_hero.jpg" alt="Happy pet sitter with dogs" class="sitter-main-img" />
+                        <div class="earnings-card">
+                            <div class="earnings-label">This month</div>
+                            <div class="earnings-amount">₱18,240 <span class="earnings-icon">🐾</span></div>
+                            <div class="earnings-growth">
+                                <i class="fa-solid fa-arrow-trend-up"></i> +24% from last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Earnings -->
+        <section class="earnings-section">
+            <div class="section-header">
+                <h2>You keep 80% of every booking.</h2>
+                <p>Transparent pricing, no hidden fees, no surprises.</p>
+            </div>
+
+            <div class="earnings-content">
+                <div class="donut-wrapper">
+                    <svg class="donut-chart" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="70" fill="none" stroke="#f3e8ff" stroke-width="28"/>
+                        <!-- 80% arc = 351.68deg of 439.6 circumference -->
+                        <circle
+                            cx="100" cy="100" r="70"
+                            fill="none"
+                            stroke="url(#donutGrad)"
+                            stroke-width="28"
+                            stroke-dasharray="351.68 87.92"
+                            stroke-dashoffset="109.9"
+                            stroke-linecap="round"
+                        />
+                        <defs>
+                            <linearGradient id="donutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#a855f7"/>
+                                <stop offset="100%" stop-color="#ec4899"/>
+                            </linearGradient>
+                        </defs>
+                        <text x="100" y="95" text-anchor="middle" font-size="28" font-weight="800" fill="#1a1a1a">80%</text>
+                        <text x="100" y="118" text-anchor="middle" font-size="13" fill="#6b7280">You</text>
+                    </svg>
+                    <p class="donut-note">20% platform fee covers payment processing, insurance, 24/7 support, and continuous improvements.</p>
+                </div>
+
+                <div class="earnings-perks">
+                    <div class="perk-card">
+                        <div class="perk-icon">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h3>You Set Your Rates</h3>
+                        <p>Choose what you charge based on your experience, services, and availability.</p>
+                    </div>
+
+                    <div class="perk-card">
+                        <div class="perk-icon">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <h3>We Handle All Payments</h3>
+                        <p>Secure payment processing, no awkward cash exchanges, no chasing clients.</p>
+                    </div>
+
+                    <div class="perk-card">
+                        <div class="perk-icon">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                        <h3>Paid Every Week</h3>
+                        <p>Direct deposit every Friday. Consistent, reliable income on your terms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements -->
+        <section class="requirements-section">
+            <div class="requirements-container">
+                <div class="requirements-text">
+                    <h2>We're selective<br>for a reason.</h2>
+                    <p>FurCare isn't for everyone — and that's by design. We only work with sitters who genuinely love animals, have experience caring for pets, and understand the responsibility that comes with being trusted in someone's home.</p>
+                    <p>Our vetting process is thorough because pet owners deserve peace of mind. If you're passionate about pet care and meet our standards, we'd love to have you.</p>
+                </div>
+
+                <div class="requirements-card">
+                    <h3>Requirements</h3>
+                    <ul class="requirements-list">
+                        <li>
+                            <span class="req-check"><i class="fa-solid fa-check"></i></span>
+                            18+ years old
+                        </li>
+                        <li>
+                            <span class="req-check"><i class="fa-solid fa-check"></i></span>
+                            Prior pet care experience (professional or personal)
+                        </li>
+                        <li>
+                            <span class="req-check"><i class="fa-solid fa-check"></i></span>
+                            Pass background check & reference verification
+                        </li>
+                        <li>
+                            <span class="req-check"><i class="fa-solid fa-check"></i></span>
+                            Complete a video or in-person interview
+                        </li>
+                        <li>
+                            <span class="req-check"><i class="fa-solid fa-check"></i></span>
+                            Live within FurCare's service area
+                        </li>
+                        <li>
+                            <span class="req-check"><i class="fa-solid fa-check"></i></span>
+                            Provide proof of pet care training or certifications (preferred)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="sitter-steps-section">
+            <div class="section-header">
+                <h2>3 Steps to Start Earning</h2>
+                <p>From application to first booking — we make it simple.</p>
+            </div>
+
+            <div class="sitter-steps-grid">
+                <div class="sitter-step-card">
+                    <div class="sitter-step-number sitter-step-blue">1</div>
+                    <div class="sitter-step-icon sitter-step-icon-blue">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </div>
+                    <h3>Submit Application</h3>
+                    <p>Fill out a simple form about your experience and why you want to be a FurCare sitter.</p>
+                </div>
+
+                <div class="sitter-step-card">
+                    <div class="sitter-step-number sitter-step-purple">2</div>
+                    <div class="sitter-step-icon sitter-step-icon-purple">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Verification & Interview</h3>
+                    <p>We'll run your background check and schedule a quick video or in-person interview.</p>
+                </div>
+
+                <div class="sitter-step-card">
+                    <div class="sitter-step-number sitter-step-green">3</div>
+                    <div class="sitter-step-icon sitter-step-icon-green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Start Booking</h3>
+                    <p>Once approved, set your rates, availability, and start accepting bookings immediately.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sitter testimonials -->
+        <section class="sitter-reviews-section">
+            <div class="section-header">
+                <h2>Hear from our sitters</h2>
+                <p>Real stories from people who turned their love of animals into income.</p>
+            </div>
+
+            <div class="sitter-reviews-grid">
+                <div class="sitter-review-card">
+                    <div class="reviewer-header">
+                        <div class="reviewer-avatar reviewer-avatar-1">AR</div>
+                        <div class="reviewer-info">
+                            <strong>Ana Rivera</strong>
+                            <span>Makati</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"I was laid off during the pandemic. FurCare gave me a way to earn income doing what I genuinely love. Now I have 15 regular clients and couldn't be happier."</p>
+                </div>
+
+                <div class="sitter-review-card">
+                    <div class="reviewer-header">
+                        <div class="reviewer-avatar reviewer-avatar-2">DC</div>
+                        <div class="reviewer-info">
+                            <strong>Daniel Cruz</strong>
+                            <span>Quezon City</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"The flexibility is unreal. I walk dogs in the morning before my classes and pet sit on weekends. Perfect side income for a college student."</p>
+                </div>
+
+                <div class="sitter-review-card">
+                    <div class="reviewer-header">
+                        <div class="reviewer-avatar reviewer-avatar-3">SL</div>
+                        <div class="reviewer-info">
+                            <strong>Sophia Lim</strong>
+                            <span>BGC</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p>"FurCare doesn't just accept anyone. The vetting process was thorough, but it makes me feel safe and professional. Pet owners trust us because FurCare trusts us."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list" id="faqList">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How much can I realistically earn as a FurCare sitter?
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most sitters earn between ₱500–₱1,500/month depending on availability and services offered. Full-time sitters with multiple clients can earn significantly more. You set your own rates, so your income is entirely in your control.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How long does the application process take?
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most applications are reviewed within 3–5 business days. The background check and interview typically take 1–2 weeks. Once approved, you can start accepting bookings immediately.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Do I need professional pet care experience?
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Not necessarily. Personal experience — like having owned pets, caring for family pets, or volunteering at a shelter — counts. What matters most is your genuine love for animals and your sense of responsibility.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        What if a pet gets injured while in my care?
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Every booking on FurCare is backed by our liability insurance coverage. If something unexpected happens, our support team is available 24/7 and you're protected under our sitter guarantee policy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Can I choose which bookings to accept?
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. You're in full control of your calendar and which requests you accept. You can set your availability, block out dates, and decline any booking that doesn't work for you — no questions asked.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        What happens if I need to cancel a booking?
+                        <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Life happens — we understand. You can cancel bookings through your dashboard. We ask for as much notice as possible so the pet owner can find alternative care. Repeated last-minute cancellations may affect your sitter rating.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="sitter-cta-section">
+            <div class="sitter-cta-content">
+                <h2>Ready to start?</h2>
+                <a href="auth.html?tab=signup&intent=sitter" class="btn-sitter-cta">Apply Now</a>
+                <div class="cta-trust-signals">
+                    <span><i class="fa-solid fa-check"></i> Free to join</span>
+                    <span><i class="fa-solid fa-shield-halved"></i> Background check covered</span>
+                    <span><i class="fa-regular fa-clock"></i> Start within 48 hours</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="brand-header">
+                        <div class="footer-logo">🐾</div>
+                        <div>
+                            <h3 class="brand-name">FurCare</h3>
+                            <span class="brand-tagline">Trusted Pet Care Marketplace</span>
+                        </div>
+                    </div>
+                    <p class="brand-desc">
+                        Connecting pet owners with verified, background-checked pet sitters and dog walkers. Safe, reliable pet care in your neighborhood.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-col">
+                        <h4>For Pet Owners</h4>
+                        <ul>
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="index.html#how-it-works">How It Works</a></li>
+                            <li><a href="auth.html?tab=signup">Find a Sitter</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-col">
+                        <h4>For Sitters</h4>
+                        <ul>
+                            <li><a href="for-sitters.html">Become a Sitter</a></li>
+                            <li><a href="#requirements">Sitter Requirements</a></li>
+                            <li><a href="#earnings">How You Earn</a></li>
+                            <li><a href="#">Sitter Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FurCare. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/for-sitters.js"></script>
+
+</body>
+</html>
