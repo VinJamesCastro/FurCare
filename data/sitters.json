@@ -1,0 +1,98 @@
+[
+  {
+    "id": "sitter-001",
+    "name": "Maya Reyes",
+    "location": "Makati",
+    "photo": "https://picsum.photos/seed/maya/400/300",
+    "rating": 4.9,
+    "reviewCount": 38,
+    "pricePerHour": 150,
+    "services": ["Dog Walking", "Pet Sitting"],
+    "experience": 5,
+    "badge": "Top Rated"
+  },
+  {
+    "id": "sitter-002",
+    "name": "Carlo Santos",
+    "location": "BGC, Taguig",
+    "photo": "https://picsum.photos/seed/carlo/400/300",
+    "rating": 4.8,
+    "reviewCount": 21,
+    "pricePerHour": 300,
+    "services": ["Dog Walking", "Special Care"],
+    "experience": 3,
+    "badge": null
+  },
+  {
+    "id": "sitter-003",
+    "name": "Issa Flores",
+    "location": "Quezon City",
+    "photo": "https://picsum.photos/seed/issa/400/300",
+    "rating": 5.0,
+    "reviewCount": 14,
+    "pricePerHour": 180,
+    "services": ["Pet Sitting", "Special Care"],
+    "experience": 2,
+    "badge": "New"
+  },
+  {
+    "id": "sitter-004",
+    "name": "Marco Lim",
+    "location": "Pasig",
+    "photo": "https://picsum.photos/seed/marco/400/300",
+    "rating": 4.7,
+    "reviewCount": 55,
+    "pricePerHour": 120,
+    "services": ["Dog Walking"],
+    "experience": 6,
+    "badge": "Top Rated"
+  },
+  {
+    "id": "sitter-005",
+    "name": "Dana Cruz",
+    "location": "Mandaluyong",
+    "photo": "https://picsum.photos/seed/dana/400/300",
+    "rating": 4.6,
+    "reviewCount": 9,
+    "pricePerHour": 400,
+    "services": ["Pet Sitting"],
+    "experience": 1,
+    "badge": null
+  },
+  {
+    "id": "sitter-006",
+    "name": "Toni Villanueva",
+    "location": "Marikina",
+    "photo": "https://picsum.photos/seed/toni/400/300",
+    "rating": 4.9,
+    "reviewCount": 47,
+    "pricePerHour": 250,
+    "services": ["Dog Walking", "Pet Sitting", "Special Care"],
+    "experience": 8,
+    "badge": "Top Rated"
+  },
+  {
+    "id": "sitter-007",
+    "name": "Luis Bautista",
+    "location": "Las Piñas",
+    "photo": "https://picsum.photos/seed/luis/400/300",
+    "rating": 4.8,
+    "reviewCount": 33,
+    "pricePerHour": 350,
+    "services": ["Dog Walking", "Special Care"],
+    "experience": 4,
+    "badge": "Top Rated"
+  },
+  {
+    "id": "sitter-008",
+    "name": "Camille Aquino",
+    "location": "Parañaque",
+    "photo": "https://picsum.photos/seed/camille/400/300",
+    "rating": 4.7,
+    "reviewCount": 19,
+    "pricePerHour": 450,
+    "services": ["Pet Sitting", "Special Care"],
+    "experience": 3,
+    "badge": "New"
+  }
+]

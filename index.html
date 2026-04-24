@@ -11,6 +11,7 @@
     
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/sitters.css">
 </head>
 
 
@@ -33,7 +34,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="sitters.html">For Sitters</a></li>
+                <li><a href="for-sitters.html">For Sitters</a></li>
             </ul>
 
             <ul class="nav-right">
@@ -64,7 +65,7 @@
 
                 <div class="hero-actions">
                     <a href="auth.html?tab=signup" class="btn-primary">Find a Sitter</a>
-                    <a href="sitters.html" class="btn-secondary">
+                    <a href="for-sitters.html" class="btn-secondary">
                         <span class="play-icon">▶</span> For Sitters
                     </a>
                 </div>
@@ -100,35 +101,73 @@
         </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="services-section">
-        <div class="section-header">
-            <h2>Pet Care Services You Can Trust</h2>
-            <p>Professional care for your pets, from daily walks to extended stays. All providers are verified and insured.</p>
+
+    <!--
+  STEP 1: Add this to your <head> after existing CSS links:
+  <link rel="stylesheet" href="css/sitters.css">
+
+  STEP 2: Paste this section between your hero and services sections in index.html
+-->
+
+    <!-- Sitter preview -->
+    <section class="sitter-preview">
+
+    <div class="sitter-preview__header">
+        <div>
+        <h2>Meet our sitters</h2>
+        <p>Background-checked, locally vetted, and loved by pets.</p>
+        </div>
+        <a href="auth.html?tab=signup&redirect=sitters.html" class="sitter-preview__see-all">
+        See all sitters →
+        </a>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="sitter-filters">
+
+        <div class="sitter-filter__group">
+        <label class="sitter-filter__label" for="serviceFilter">Service Type</label>
+        <select class="sitter-filter__select" id="serviceFilter">
+            <option value="all">All Services</option>
+            <option value="Dog Walking">Dog Walking</option>
+            <option value="Pet Sitting">Pet Sitting</option>
+            <option value="Special Care">Special Care</option>
+        </select>
         </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🏠</div>
-                <h3>Pet Sitting</h3>
-                <p>Overnight and house sitting services. Your pet stays comfortable in their own home while you're away.</p>
-                <p class="service-price">Starting at $35/night</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🚶</div>
-                <h3>Dog Walking</h3>
-                <p>30 or 60-minute walks scheduled around your busy day. Keep your dog happy, healthy, and exercised.</p>
-                <p class="service-price">Starting at $20/walk</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">❤️</div>
-                <h3>Special Care</h3>
-                <p>Senior pet care, post-surgery support, and medication administration from experienced providers.</p>
-                <p class="service-price">Starting at $45/visit</p>
-            </div>
+        <div class="sitter-filter__group">
+        <!--
+            Distance filter is intentionally non-functional on this page.
+            Requires Geolocation API + real coordinates per sitter.
+            Will be wired up on sitters.html with real Firestore data.
+        -->
+        <label class="sitter-filter__label" for="distanceFilter">
+            <span class="sitter-filter__label-icon">◎</span> Distance
+        </label>
+        <select class="sitter-filter__select" id="distanceFilter">
+            <option value="all">Within 10km</option>
+            <option value="5">Within 5km</option>
+            <option value="2">Within 2km</option>
+        </select>
         </div>
+
+        <div class="sitter-filter__group">
+        <label class="sitter-filter__label" for="priceFilter">
+            ₱ Price Range
+        </label>
+        <select class="sitter-filter__select" id="priceFilter">
+            <option value="all">Any Price</option>
+            <option value="200">Up to ₱200/hr</option>
+            <option value="350">Up to ₱350/hr</option>
+            <option value="500">Up to ₱500/hr</option>
+        </select>
+        </div>
+
+    </div>
+
+    <!-- JS renders cards here -->
+    <div class="sitter-grid" id="sitterPreviewGrid"></div>
+
     </section>
 
    <!-- Features -->
