@@ -1,96 +1,198 @@
-        // Tab switcher
-        function switchTab(tab) {
-            const slider = document.getElementById('tabSlider');
-            const signinTab = document.getElementById('signinTab');
-            const signupTab = document.getElementById('signupTab');
-            const signinPanel = document.getElementById('signinPanel');
-            const signupPanel = document.getElementById('signupPanel');
+(function (initAuth) {
+  'use strict';
 
-            if (tab === 'signin') {
-                slider.classList.remove('signup');
-                signinTab.classList.add('active');
-                signupTab.classList.remove('active');
-                signinPanel.classList.add('active');
-                signupPanel.classList.remove('active');
-            } else {
-                slider.classList.add('signup');
-                signupTab.classList.add('active');
-                signinTab.classList.remove('active');
-                signupPanel.classList.add('active');
-                signinPanel.classList.remove('active');
-            }
-        }
+  // Email validation regex
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        // Password toggle
-        function togglePassword(inputId, icon) {
-            const input = document.getElementById(inputId);
-            const isHidden = input.type === 'password';
-            input.type = isHidden ? 'text' : 'password';
-            icon.className = isHidden
-                ? 'fa-regular fa-eye-slash toggle-password'
-                : 'fa-regular fa-eye toggle-password';
-        }
+  // ── Tab switching ──────────────────────────────────────────
+  const tabSignin  = document.getElementById('tab-signin');
+  const tabSignup  = document.getElementById('tab-signup');
+  const panelSignin = document.getElementById('panel-signin');
+  const panelSignup = document.getElementById('panel-signup');
 
-        // Validation
-        const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function switchTab(target) {
+    const isSignin = target === 'signin';
 
-        function setError(fieldId, hasError) {
-            const field = document.getElementById(fieldId);
-            if (hasError) {
-                field.classList.add('has-error');
-            } else {
-                field.classList.remove('has-error');
-            }
-            return hasError;
-        }
+    tabSignin.classList.toggle('is-active', isSignin);
+    tabSignup.classList.toggle('is-active', !isSignin);
 
 
-        // Open correct tab based on URL
-        window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('tab') === 'signup') {
-                switchTab('signup');
-            }
-        });
+    tabSignin.setAttribute('aria-selected', String(isSignin));
+    tabSignup.setAttribute('aria-selected', String(!isSignin))
 
-        // Sign in form
-        document.getElementById('signinForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('signinEmail').value.trim();
-            const password = document.getElementById('signinPassword').value;
+    panelSignin.classList.toggle('is-active', isSignin);
+    panelSignup.classList.toggle('is-active', !isSignin);
 
-            let hasErrors = false;
-            if (setError('signinEmailField', !EMAIL_REGEX.test(email))) hasErrors = true;
-            if (setError('signinPasswordField', !password)) hasErrors = true;
+    panelSignin.hidden = !isSignin;
+    panelSignup.hidden = isSignin;
+  }
 
-            if (!hasErrors) {
-                // TODO: Wire to backend / Firebase Auth
-                alert(`Welcome back! Signing in as ${email}`);
-            }
-        });
+  if (tabSignin) {
+    tabSignin.addEventListener('click', function () { switchTab('signin'); });
+  }
 
-        // Sign up form
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('signupEmail').value.trim();
-            const password = document.getElementById('signupPassword').value;
-            const confirm = document.getElementById('signupConfirm').value;
+  if (tabSignup) {
+    tabSignup.addEventListener('click', function () { switchTab('signup'); });
+  }
 
-            let hasErrors = false;
-            if (setError('signupEmailField', !EMAIL_REGEX.test(email))) hasErrors = true;
-            if (setError('signupPasswordField', password.length < 8)) hasErrors = true;
-            if (setError('signupConfirmField', password !== confirm)) hasErrors = true;
+  // Inline switch links inside panels
+  document.querySelectorAll('.auth-switch-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      switchTab(this.dataset.target);
+    });
+  });
 
-            if (!hasErrors) {
-                // TODO: Wire to backend / Firebase Auth
-                alert(`Account created! Welcome to FurCare, ${email}`);
-            }
-        });
+  // Open correct tab if redirected with ?tab=signup
+  var urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('tab') === 'signup') {
+    switchTab('signup');
+  }
 
-        // Clear errors on input
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', () => {
-                const field = input.closest('.field-group');
-                if (field) field.classList.remove('has-error');
-            });
-        });
+  // ── Password visibility toggle ─────────────────────────────
+
+  document.querySelectorAll('.auth-toggle-pw').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var input = this.parentElement.querySelector('.auth-input');
+      if (!input) return;
+      var isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      var icon = this.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-eye', !isPassword);
+        icon.classList.toggle('fa-eye-slash', isPassword);
+      }
+    });
+  });
+
+  // ── Validation helpers ─────────────────────────────────────
+
+  function showError(inputEl, errorEl, message) {
+    if (!inputEl || !errorEl) return;
+    inputEl.classList.add('is-error');
+    errorEl.textContent = message;
+  }
+
+  function clearError(inputEl, errorEl) {
+    if (!inputEl || !errorEl) return;
+    inputEl.classList.remove('is-error');
+    errorEl.textContent = '';
+  }
+
+  function validateEmail(value) {
+    if (!value) return 'Email is required.';
+    if (!EMAIL_REGEX.test(value)) return 'Enter a valid email address.';
+    return '';
+  }
+
+  function validatePassword(value) {
+    if (!value) return 'Password is required.';
+    if (value.length < 8) return 'Password must be at least 8 characters.';
+    return '';
+  }
+
+  function validateName(value, label) {
+    if (!value.trim()) return (label || 'This field') + ' is required.';
+    return '';
+  }
+
+  // ── Sign In form ───────────────────────────────────────────
+
+  var signinForm = document.getElementById('signinForm');
+
+  if (signinForm) {
+    var signinEmail = document.getElementById('signin-email');
+    var signinEmailErr = document.getElementById('signin-email-error');
+    var signinPassword = document.getElementById('signin-password');
+    var signinPasswordErr = document.getElementById('signin-password-error');
+
+    if (signinEmail) {
+      signinEmail.addEventListener('blur', function () {
+        var err = validateEmail(this.value);
+        err ? showError(signinEmail, signinEmailErr, err) : clearError(signinEmail, signinEmailErr);
+      });
+    }
+
+    if (signinPassword) {
+      signinPassword.addEventListener('blur', function () {
+        var err = validatePassword(this.value);
+        err ? showError(signinPassword, signinPasswordErr, err) : clearError(signinPassword, signinPasswordErr);
+      });
+    }
+
+    signinForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var emailErr = validateEmail(signinEmail ? signinEmail.value : '');
+      var passwordErr = validatePassword(signinPassword ? signinPassword.value : '');
+      emailErr ? showError(signinEmail, signinEmailErr, emailErr) : clearError(signinEmail, signinEmailErr);
+      passwordErr ? showError(signinPassword, signinPasswordErr, passwordErr) : clearError(signinPassword, signinPasswordErr);
+      if (emailErr || passwordErr) return;
+      // Firebase Auth sign in goes here
+      console.log('Sign in submitted — Firebase Auth not yet wired.');
+    });
+  }
+
+  // ── Sign Up form ───────────────────────────────────────────
+
+  var signupForm = document.getElementById('signupForm');
+
+  if (signupForm) {
+    var signupFirstname = document.getElementById('signup-firstname');
+    var signupFirstnameErr = document.getElementById('signup-firstname-error');
+    var signupLastname = document.getElementById('signup-lastname');
+    var signupLastnameErr = document.getElementById('signup-lastname-error');
+    var signupEmail = document.getElementById('signup-email');
+    var signupEmailErr = document.getElementById('signup-email-error');
+    var signupPassword = document.getElementById('signup-password');
+    var signupPasswordErr = document.getElementById('signup-password-error');
+
+    if (signupFirstname) {
+      signupFirstname.addEventListener('blur', function () {
+        var err = validateName(this.value, 'First name');
+        err ? showError(signupFirstname, signupFirstnameErr, err) : clearError(signupFirstname, signupFirstnameErr);
+      });
+    }
+
+    if (signupLastname) {
+      signupLastname.addEventListener('blur', function () {
+        var err = validateName(this.value, 'Last name');
+        err ? showError(signupLastname, signupLastnameErr, err) : clearError(signupLastname, signupLastnameErr);
+      });
+    }
+
+    if (signupEmail) {
+      signupEmail.addEventListener('blur', function () {
+        var err = validateEmail(this.value);
+        err ? showError(signupEmail, signupEmailErr, err) : clearError(signupEmail, signupEmailErr);
+      });
+    }
+
+    if (signupPassword) {
+      signupPassword.addEventListener('blur', function () {
+        var err = validatePassword(this.value);
+        err ? showError(signupPassword, signupPasswordErr, err) : clearError(signupPassword, signupPasswordErr);
+      });
+    }
+
+    signupForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var firstnameErr = validateName(signupFirstname ? signupFirstname.value : '', 'First name');
+      var lastnameErr = validateName(signupLastname ? signupLastname.value : '', 'Last name');
+      var emailErr = validateEmail(signupEmail ? signupEmail.value : '');
+      var passwordErr = validatePassword(signupPassword ? signupPassword.value : '');
+
+      firstnameErr ? showError(signupFirstname, signupFirstnameErr, firstnameErr) : clearError(signupFirstname, signupFirstnameErr);
+      lastnameErr ? showError(signupLastname, signupLastnameErr, lastnameErr) : clearError(signupLastname, signupLastnameErr);
+      emailErr ? showError(signupEmail, signupEmailErr, emailErr) : clearError(signupEmail, signupEmailErr);
+      passwordErr ? showError(signupPassword, signupPasswordErr, passwordErr) : clearError(signupPassword, signupPasswordErr);
+
+      if (firstnameErr || lastnameErr || emailErr || passwordErr) return;
+
+      // Firebase Auth create user goes here
+      // After success → onboarding.html
+      console.log('Sign up submitted — Firebase Auth not yet wired.');
+      window.location.href = 'onboarding.html';
+    });
+  }
+
+})();

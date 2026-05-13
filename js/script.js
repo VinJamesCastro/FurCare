@@ -205,7 +205,6 @@ if (console && console.log) {
     );
 }
 
-// Paste this inside your existing IIFE in script.js, replacing your previous sitter preview block
 
 // Number of sitter cards to show on the preview
 var PREVIEW_COUNT = 8;
@@ -221,10 +220,9 @@ var PRICE_LIMITS = {
   '500': 500
 };
 
-// Holds the full sitter array after fetch — used by filter functions
+// Holds the full sitter array after fetch — filters always work from the complete dataset
 var allSitters = [];
 
-// Null guard: only run if the preview grid exists on this page
 var sitterPreviewGrid = document.getElementById('sitterPreviewGrid');
 var serviceFilter = document.getElementById('serviceFilter');
 var priceFilter = document.getElementById('priceFilter');
@@ -233,24 +231,19 @@ var distanceFilter = document.getElementById('distanceFilter');
 if (sitterPreviewGrid) {
   fetch(SITTERS_DATA_URL)
     .then(function (res) {
-      // fetch() only rejects on network failure, not 404s
-      // Checking res.ok catches a missing file with a real error
       if (!res.ok) {
         throw new Error('Could not load sitters data. Status: ' + res.status);
       }
       return res.json();
     })
     .then(function (sitters) {
-      // Store the full list so filters can always work from the complete dataset
       allSitters = sitters;
       renderSitterCards(getFilteredSitters(), sitterPreviewGrid);
     })
     .catch(function (err) {
-      // Fail silently on the page — a missing JSON file shouldn't break the layout
       console.error('Sitter preview error:', err);
     });
 
-  // Attach filter change listeners — each re-runs the filter against the full dataset
   if (serviceFilter) {
     serviceFilter.addEventListener('change', function () {
       renderSitterCards(getFilteredSitters(), sitterPreviewGrid);
@@ -263,9 +256,7 @@ if (sitterPreviewGrid) {
     });
   }
 
-  // Distance filter: renders but does not actually filter
-  // Requires Geolocation API + real coordinates on each sitter record
-  // Stubbed intentionally — will be wired on sitters.html with real Firestore data
+  // Distance: renders but does not filter — no geo data yet
   if (distanceFilter) {
     distanceFilter.addEventListener('change', function () {
       renderSitterCards(getFilteredSitters(), sitterPreviewGrid);
@@ -273,46 +264,45 @@ if (sitterPreviewGrid) {
   }
 }
 
-// Returns a filtered + sliced subset of allSitters based on current dropdown values
 function getFilteredSitters() {
   var selectedService = serviceFilter ? serviceFilter.value : 'all';
   var selectedPrice = priceFilter ? priceFilter.value : 'all';
 
   var filtered = allSitters.filter(function (sitter) {
-    // Service filter: pass if "All Services" selected, or sitter offers the selected service
     var passesService =
       selectedService === 'all' ||
       sitter.services.indexOf(selectedService) !== -1;
 
-    // Price filter: pass if "Any" selected, or sitter's rate is within the ceiling
     var priceLimit = PRICE_LIMITS[selectedPrice];
-    var passesPrice =
-      priceLimit === null ||
-      sitter.pricePerHour <= priceLimit;
+    var passesPrice = priceLimit === null || sitter.pricePerHour <= priceLimit;
 
-    // Distance: always passes — stubbed, no real geo data available yet
-    var passesDistance = true;
-
-    return passesService && passesPrice && passesDistance;
+    return passesService && passesPrice;
   });
 
-  // Cap preview at PREVIEW_COUNT even after filtering
   return filtered.slice(0, PREVIEW_COUNT);
 }
 
-// Builds an HTML string for one sitter card
 function buildSitterCard(sitter) {
-  // Only render badge if a value exists — null means intentionally absent
+  // Badge renders bottom-left of photo only if badge value exists
   var badgeHTML = sitter.badge
     ? '<span class="sitter-card__badge">' + sitter.badge + '</span>'
     : '';
 
-  // Join services array into a readable string: "Dog Walking · Pet Sitting"
-  var servicesText = sitter.services.join(' · ');
+  // Each service becomes an outlined chip
+  var serviceTagsHTML = sitter.services
+    .map(function (s) {
+      return '<span class="sitter-card__service-tag">' + s + '</span>';
+    })
+    .join('');
 
   return (
     '<article class="sitter-card">' +
       '<div class="sitter-card__photo-wrap">' +
+        // Rating pill — top right
+        '<div class="sitter-card__rating-pill">' +
+          '<span class="star">★</span>' +
+          sitter.rating + ' (' + sitter.reviewCount + ')' +
+        '</div>' +
         badgeHTML +
         '<img ' +
           'src="' + sitter.photo + '" ' +
@@ -322,36 +312,31 @@ function buildSitterCard(sitter) {
         '>' +
       '</div>' +
       '<div class="sitter-card__body">' +
+        // Name + price on same row
         '<div class="sitter-card__top">' +
           '<span class="sitter-card__name">' + sitter.name + '</span>' +
-          '<span class="sitter-card__rating">' +
-            '★ ' + sitter.rating +
-            ' <span class="sitter-card__reviews">(' + sitter.reviewCount + ')</span>' +
+          '<span class="sitter-card__price">' +
+            '₱' + sitter.pricePerHour +
+            '<span class="sitter-card__per-hour">/hr</span>' +
           '</span>' +
         '</div>' +
-        '<div class="sitter-card__location">◎ ' + sitter.location + '</div>' +
-        '<div class="sitter-card__experience">' +
-          sitter.experience + ' year' + (sitter.experience === 1 ? '' : 's') +
-          ' experience · ' + servicesText +
+        '<div class="sitter-card__location">📍 ' + sitter.location + '</div>' +
+        // Service chips
+        '<div class="sitter-card__services">' +
+          serviceTagsHTML +
         '</div>' +
-        '<div class="sitter-card__price">' +
-          '₱' + sitter.pricePerHour +
-          ' <span class="sitter-card__per-hour">/ hour</span>' +
-        '</div>' +
+        // View profile button — links to profile page later
+        '<button class="sitter-card__btn">View Profile</button>' +
       '</div>' +
     '</article>'
   );
 }
 
-// Renders cards into the container in one DOM write
 function renderSitterCards(sitters, container) {
   if (sitters.length === 0) {
-    // Show an empty state instead of a blank grid
     container.innerHTML = '<p class="sitter-grid__empty">No sitters match your filters. Try adjusting your search.</p>';
     return;
   }
-  // map builds an array of HTML strings, join merges into one string
-  // One innerHTML write = one DOM reflow, not one per card
   var html = sitters.map(buildSitterCard).join('');
   container.innerHTML = html;
 }

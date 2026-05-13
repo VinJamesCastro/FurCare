@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Link to external CSS file -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/sitters.css">
 </head>
@@ -19,14 +22,10 @@
 
     <!-- Header -->
     <header class="site-header">
-    <div class="logo-container">
-        <a href="/" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-            <div class="logo">
-                <span class="emoji">🐾</span>
-            </div>
-            <h1 class="header">FurCare</h1>
-        </a>
-    </div>
+        <div class="logo-container">
+            <img src="assets/images/1stpaw.png" class="logo-icon" alt="FurCare paw logo">
+            <span class="logo-text">FurCare</span>
+        </div>
 
         <nav class="main-nav">
             <ul class="nav-left">
@@ -79,7 +78,7 @@
 
             <div class="hero-visual">
                 <div class="image-wrapper">
-                    <img src="assets/images/pet_hero.jpg" alt="Dog licking nose" class="main-img" />
+                    <img src="assets/images/sitters/petswsitters.png" alt="Dog licking nose" class="main-img" />
                     
                     <div class="floating-card health-check">
                         <div class="card-icon check-circle">✓</div>
@@ -102,29 +101,22 @@
     </section>
 
 
-    <!--
-  STEP 1: Add this to your <head> after existing CSS links:
-  <link rel="stylesheet" href="css/sitters.css">
-
-  STEP 2: Paste this section between your hero and services sections in index.html
--->
-
     <!-- Sitter preview -->
     <section class="sitter-preview">
-
+    
     <div class="sitter-preview__header">
         <div>
-        <h2>Meet our sitters</h2>
+        <h2>Featured Sitters</h2>
         <p>Background-checked, locally vetted, and loved by pets.</p>
         </div>
         <a href="auth.html?tab=signup&redirect=sitters.html" class="sitter-preview__see-all">
-        See all sitters →
+        View all sitters →
         </a>
     </div>
-
+    
     <!-- Filter bar -->
     <div class="sitter-filters">
-
+    
         <div class="sitter-filter__group">
         <label class="sitter-filter__label" for="serviceFilter">Service Type</label>
         <select class="sitter-filter__select" id="serviceFilter">
@@ -134,27 +126,23 @@
             <option value="Special Care">Special Care</option>
         </select>
         </div>
-
+    
         <div class="sitter-filter__group">
         <!--
             Distance filter is intentionally non-functional on this page.
-            Requires Geolocation API + real coordinates per sitter.
-            Will be wired up on sitters.html with real Firestore data.
+            Requires Geolocation API + real sitter coordinates.
+            Will be wired on sitters.html with real Firestore data.
         -->
-        <label class="sitter-filter__label" for="distanceFilter">
-            <span class="sitter-filter__label-icon">◎</span> Distance
-        </label>
+        <label class="sitter-filter__label" for="distanceFilter">◎ Distance</label>
         <select class="sitter-filter__select" id="distanceFilter">
             <option value="all">Within 10km</option>
             <option value="5">Within 5km</option>
             <option value="2">Within 2km</option>
         </select>
         </div>
-
+    
         <div class="sitter-filter__group">
-        <label class="sitter-filter__label" for="priceFilter">
-            ₱ Price Range
-        </label>
+        <label class="sitter-filter__label" for="priceFilter">₱ Price Range</label>
         <select class="sitter-filter__select" id="priceFilter">
             <option value="all">Any Price</option>
             <option value="200">Up to ₱200/hr</option>
@@ -162,55 +150,84 @@
             <option value="500">Up to ₱500/hr</option>
         </select>
         </div>
-
+    
     </div>
-
+    
     <!-- JS renders cards here -->
     <div class="sitter-grid" id="sitterPreviewGrid"></div>
-
+    
     </section>
 
-   <!-- Features -->
-     <section id="features" class="features-section">
+  <!-- Features -->
+    <section id="features" class="features-section">
         <div class="section-header">
-            <h2>Everything You Need to Book with Confidence</h2>
+            <h2>Everything You Need to Book with <span class="highlight">Confidence</span></h2>
             <p>From verified sitters to 24/7 support — our platform has every detail covered so you can relax.</p>
         </div>
 
         <div class="features-grid">
 
             <div class="feature-card">
-                <div class="icon-box green">✓</div>
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                </div>
                 <h3>Background-Checked Sitters</h3>
                 <p>Every sitter undergoes a comprehensive criminal background check, reference verification, and interview process before joining our platform.</p>
             </div>
 
             <div class="feature-card">
-                <div class="icon-box pink">📋</div>
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="2" width="6" height="4" rx="1"/>
+                        <path d="M5 4h2a1 1 0 0 1 1 1v1H5V4z"/>
+                        <rect x="3" y="6" width="18" height="16" rx="2"/>
+                        <path d="M7 12h10M7 16h6"/>
+                    </svg>
+                </div>
                 <h3>Premium Insurance Coverage</h3>
                 <p>Pay safely through our secure platform. Every booking is backed by premium liability insurance for total peace of mind.</p>
             </div>
 
             <div class="feature-card">
-                <div class="icon-box blue">🔔</div>
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                </div>
                 <h3>Real-Time Updates</h3>
                 <p>Communicate easily with your sitter and get real-time photo and text updates of your furry friend having fun.</p>
             </div>
 
             <div class="feature-card">
-                <div class="icon-box purple">⭐</div>
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
                 <h3>Verified Reviews & Ratings</h3>
                 <p>Read honest feedback from other pet parents to find the perfect, trusted match for your pet.</p>
             </div>
 
             <div class="feature-card">
-                <div class="icon-box orange">💬</div>
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
                 <h3>24/7 Support & Guarantee</h3>
                 <p>Our customer support team is always here. Not happy? We'll make it right with our satisfaction guarantee.</p>
             </div>
 
             <div class="feature-card">
-                <div class="icon-box cyan">📅</div>
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/>
+                        <path d="M16 2v4M8 2v4M3 10h18"/>
+                    </svg>
+                </div>
                 <h3>Easy, Stress-Free Booking</h3>
                 <p>Browse available sitters, check their calendars, and book the exact services you need in just a few clicks.</p>
             </div>
@@ -228,8 +245,13 @@
         <div class="steps-grid">
             <div class="step-box">
                 <div class="step-number">STEP 01</div>
-                <div class="step-icon-blue">
-                    <i class="fa-solid fa-user-plus"></i>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <line x1="19" y1="8" x2="19" y2="14"/>
+                        <line x1="22" y1="11" x2="16" y2="11"/>
+                    </svg>
                 </div>
                 <h3>Create Your Profile</h3>
                 <p>Sign up for free and add your pet's details, special needs, and preferences.</p>
@@ -237,8 +259,11 @@
 
             <div class="step-box">
                 <div class="step-number">STEP 02</div>
-                <div class="step-icon-purple">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
                 </div>
                 <h3>Browse Sitters</h3>
                 <p>Search verified sitters in your area, read reviews, and compare rates.</p>
@@ -246,8 +271,12 @@
 
             <div class="step-box">
                 <div class="step-number">STEP 03</div>
-                <div class="step-icon-pink">
-                    <i class="fa-solid fa-calendar-check"></i>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/>
+                        <path d="M16 2v4M8 2v4M3 10h18"/>
+                        <path d="M9 16l2 2 4-4"/>
+                    </svg>
                 </div>
                 <h3>Book & Pay Securely</h3>
                 <p>Request a booking, confirm details, and pay safely through our platform.</p>
@@ -255,8 +284,10 @@
 
             <div class="step-box">
                 <div class="step-number">STEP 04</div>
-                <div class="step-icon-green">
-                    <i class="fa-solid fa-heart"></i>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
                 </div>
                 <h3>Relax & Get Updates</h3>
                 <p>Receive photo updates during service and leave a review afterward.</p>
@@ -292,11 +323,11 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="brand-header">
-                        <div class="footer-logo">🐾</div>
-                        <div>
-                            <h3 class="brand-name">FurCare</h3>
-                            <span class="brand-tagline">Trusted Pet Care Marketplace</span>
+                        <div class="logo-container">
+                            <img src="assets/images/1stpaw.png" class="logo-icon" alt="FurCare paw logo">
+                            <span class="logo-text">FurCare</span>
                         </div>
+                        <span class="brand-tagline">Trusted Pet Care Marketplace</span>
                     </div>
 
                     <p class="brand-desc">

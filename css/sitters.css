@@ -1,7 +1,7 @@
 /* Sitter preview section */
 .sitter-preview {
   padding: var(--padding-section);
-  background: var(--color-bg-tertiary);
+  background: var(--color-bg-primary);
 }
 
 .sitter-preview__header {
@@ -14,7 +14,7 @@
 
 .sitter-preview__header h2 {
   font-size: var(--font-size-5xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-extrabold);
   color: var(--color-text-primary);
   margin-bottom: var(--space-xs);
 }
@@ -26,16 +26,18 @@
 
 .sitter-preview__see-all {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
   text-decoration: none;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   transition: color var(--transition-fast);
 }
 
 .sitter-preview__see-all:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
+  color: var(--color-primary);
 }
 
 /* Filter bar */
@@ -55,28 +57,24 @@
 
 .sitter-filter__label {
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.sitter-filter__label-icon {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-}
-
 .sitter-filter__select {
   padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--color-border-light);
+  border: 1.5px solid var(--color-border-light);
   border-radius: var(--radius-sm);
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
   appearance: auto;
   transition: border-color var(--transition-fast);
@@ -87,7 +85,7 @@
   border-color: var(--color-primary);
 }
 
-/* Sitter grid — shared with sitters.html later */
+/* Sitter grid */
 .sitter-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -96,7 +94,7 @@
   margin: 0 auto;
 }
 
-/* Empty state when no cards match filters */
+/* Empty state */
 .sitter-grid__empty {
   grid-column: 1 / -1;
   text-align: center;
@@ -108,12 +106,14 @@
 /* Sitter card */
 .sitter-card {
   background: var(--color-bg-primary);
-  border: 1px solid var(--color-border-light);
+  border: 1.5px solid var(--color-border-light);
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .sitter-card:hover {
@@ -122,7 +122,7 @@
   border-color: var(--color-primary);
 }
 
-/* Photo */
+/* Photo wrap */
 .sitter-card__photo-wrap {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -141,20 +141,40 @@
   transform: scale(1.04);
 }
 
-/* Badge */
-.sitter-card__badge {
+/* Rating pill — top right corner of photo */
+.sitter-card__rating-pill {
   position: absolute;
   top: var(--space-sm);
-  left: var(--space-sm);
-  background: var(--gradient-primary);
-  color: var(--color-bg-primary);
-  font-size: 11px;
+  right: var(--space-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: var(--shadow-md);
+}
+
+.sitter-card__rating-pill .star {
+  color: #F59E0B;
+}
+
+/* Badge — bottom left of photo */
+.sitter-card__badge {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: var(--space-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  border: 1.5px solid var(--color-border-lighter);
 }
 
 /* Card body */
@@ -163,54 +183,84 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
+  flex: 1;
 }
 
+/* Name + price row */
 .sitter-card__top {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  gap: var(--space-xs);
 }
 
 .sitter-card__name {
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-extrabold);
+  font-size: var(--font-size-lg);
   color: var(--color-text-primary);
-}
-
-.sitter-card__rating {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-primary);
-  font-weight: var(--font-weight-semibold);
-}
-
-.sitter-card__reviews {
-  color: var(--color-text-secondary);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-xs);
-}
-
-.sitter-card__location {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-}
-
-.sitter-card__experience {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-normal);
 }
 
 .sitter-card__price {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
-  margin-top: 4px;
+  white-space: nowrap;
 }
 
 .sitter-card__per-hour {
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
+}
+
+/* Location row */
+.sitter-card__location {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Services as outlined chips */
+.sitter-card__services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.sitter-card__service-tag {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+}
+
+/* View profile button */
+.sitter-card__btn {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-base);
+  text-align: center;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.sitter-card__btn:hover {
+  background: var(--color-primary);
+  color: var(--color-bg-primary);
+  border-color: var(--color-primary);
 }
 
 /* Responsive */
